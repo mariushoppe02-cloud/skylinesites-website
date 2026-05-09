@@ -15,9 +15,9 @@ export default function Footer() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#C9963B]/10 via-[#E8B84B]/5 to-[#C9963B]/10" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h3 className="text-3xl md:text-4xl font-extrabold font-[var(--font-jakarta)] text-white mb-4">Bereit, Ihr Projekt zu starten?</h3>
-          <p className="text-zinc-400 mb-8 text-lg">Lassen Sie uns gemeinsam etwas Großartiges bauen.</p>
-          <a href="#kontakt" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">Jetzt Kontakt aufnehmen →</a>
+          <h3 className="text-3xl md:text-4xl font-extrabold font-[var(--font-jakarta)] text-white mb-4">{t("footer.cta_headline")}</h3>
+          <p className="text-zinc-400 mb-8 text-lg">{t("footer.cta_subline")}</p>
+          <a href="#kontakt" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">{t("footer.cta_button")}</a>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -45,8 +45,9 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href={`/${locale}/impressum`} className="text-sm text-zinc-400 hover:text-white transition-colors">{t("footer.imprint")}</Link></li>
               <li><Link href={`/${locale}/datenschutz`} className="text-sm text-zinc-400 hover:text-white transition-colors">{t("footer.privacy")}</Link></li>
+              <li><Link href={`/${locale}/agb`} className="text-sm text-zinc-400 hover:text-white transition-colors">{t("footer.agb")}</Link></li>
             </ul>
-            <div className="mt-8 p-4 rounded-xl bg-[#18181b] border border-zinc-800"><p className="text-xs text-zinc-500 leading-relaxed">Alle Preise zzgl. gesetzlicher MwSt. Festpreisangebot nach Erstgespräch.</p></div>
+            <div className="mt-8 p-4 rounded-xl bg-[#18181b] border border-zinc-800"><p className="text-xs text-zinc-500 leading-relaxed">{t("footer.vat_note")}</p></div>
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4">

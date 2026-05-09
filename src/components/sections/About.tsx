@@ -20,10 +20,10 @@ export default function About() {
                 </div>
                 <div className="text-center">
                   <p className="font-[var(--font-jakarta)] font-bold text-2xl text-white">Skyline<span className="text-gradient-gold">Sites</span></p>
-                  <p className="text-xs text-zinc-500 mt-1">Web Design Agentur</p>
+                  <p className="text-xs text-zinc-500 mt-1">{t("agency_type")}</p>
                 </div>
                 <div className="grid grid-cols-3 gap-3 w-full mt-2">
-                  {["Qualität","Vertrauen","Ergebnis"].map((v) => (
+                  {(t.raw("values") as string[]).map((v) => (
                     <div key={v} className="text-center py-2 px-1 rounded-lg bg-[#C9963B]/5 border border-[#C9963B]/10">
                       <p className="text-[10px] text-[#C9963B] font-semibold">{v}</p>
                     </div>

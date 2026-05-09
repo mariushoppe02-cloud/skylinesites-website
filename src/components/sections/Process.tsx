@@ -26,7 +26,7 @@ export default function Process() {
                     </div>
                   </div>
                   <div className={`ml-20 md:ml-0 flex-1 p-6 rounded-2xl bg-[#18181b] border border-zinc-800 hover:border-[#C9963B]/30 transition-colors duration-300 ${isLeft ? "md:mr-[calc(50%+3rem)]" : "md:ml-[calc(50%+3rem)]"}`}>
-                    <span className="text-xs text-[#C9963B] font-semibold uppercase tracking-widest font-[var(--font-jakarta)]">Schritt {i + 1}</span>
+                    <span className="text-xs text-[#C9963B] font-semibold uppercase tracking-widest font-[var(--font-jakarta)]">{t("step")} {i + 1}</span>
                     <h3 className="text-lg font-bold text-white font-[var(--font-jakarta)] mb-2 mt-1">{step.title}</h3>
                     <p className="text-sm text-zinc-400 leading-relaxed">{step.desc}</p>
                   </div>
