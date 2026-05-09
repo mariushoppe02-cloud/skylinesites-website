@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+.DS_Store
+.claude/
+.agents/
+skills-lock.json
+*.log
