@@ -34,11 +34,11 @@ export default function Navigation() {
   const otherPath = pathname.replace(`/${locale}`, `/${otherLocale}`);
 
   return (
-    <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-500", scrolled ? "glass-nav shadow-lg" : "bg-transparent")}>
+    <header className={cn("fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500", scrolled ? "glass-nav shadow-lg" : "bg-transparent")}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href={`/${locale}`} className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 90" width="220" height="37" aria-label="SkylineSites Logo" style={{ transition: "opacity 0.2s", opacity: 1 }} onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")} onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
+          <Link href={`/${locale}`} className="flex items-center transition-opacity duration-200 hover:opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 90" width="220" height="37" aria-label="SkylineSites Logo">
               <defs>
                 <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#C9963B"/>
