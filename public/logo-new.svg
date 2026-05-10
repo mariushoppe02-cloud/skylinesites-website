@@ -4,15 +4,17 @@
       <stop offset="0%" stop-color="#C9963B"/>
       <stop offset="100%" stop-color="#E8B84B"/>
     </linearGradient>
-    <linearGradient id="goldTower" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#9A7028"/>
-      <stop offset="50%" stop-color="#C9963B"/>
-      <stop offset="100%" stop-color="#E8B84B"/>
-    </linearGradient>
   </defs>
 
   <!-- ── Goldene Türme aus Original-SVG (nur Gebäude, kein Text) ── -->
   <svg x="0" y="4" width="128" height="82" viewBox="272 278 213 134" overflow="visible">
+    <defs>
+      <linearGradient id="goldTower" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stop-color="#9A7028"/>
+        <stop offset="50%" stop-color="#C9963B"/>
+        <stop offset="100%" stop-color="#E8B84B"/>
+      </linearGradient>
+    </defs>
     <!-- Linkes Gebäude (kurz) -->
     <path stroke-linecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)" fill="none" d="M 0 4 L 60.76 4" stroke="#C9963B" stroke-width="8"/>
     <!-- Diagonale links oben -->
@@ -60,5 +62,5 @@
   </text>
 
   <!-- ── Tagline ── -->
-  <text x="159" y="82" font-family="Inter, sans-serif" font-size="8.5" fill="#4a4a52" letter-spacing="3.5">WEB DESIGN AGENTUR</text>
+  <text x="159" y="77" font-family="Inter, sans-serif" font-size="8.5" fill="#4a4a52" letter-spacing="3.5">WEB DESIGN AGENTUR</text>
 </svg>
