@@ -37,15 +37,13 @@ export default function Navigation() {
     <header className={cn("fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500", scrolled ? "glass-nav shadow-lg" : "bg-transparent")}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href={`/${locale}`} className="flex items-center transition-opacity duration-200 hover:opacity-80">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 90" width="220" height="37" aria-label="SkylineSites Logo">
-              <defs>
-                <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#C9963B"/>
-                  <stop offset="100%" stopColor="#E8B84B"/>
-                </linearGradient>
-              </defs>
-              <svg x="0" y="4" width="128" height="82" viewBox="272 278 213 134" overflow="visible">
+          <Link href={`/${locale}`} aria-label="SkylineSites">
+            <motion.div
+              className="flex items-center gap-2.5 cursor-pointer"
+              whileHover={{ opacity: 0.72 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="272 278 213 134" width="42" height="26" overflow="visible" aria-hidden="true" style={{ pointerEvents: "none" }}>
                 <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)"   fill="none" d="M 0 4 L 60.76 4"  stroke="#E8B84B" strokeWidth="8"/>
                 <path strokeLinecap="butt" transform="matrix(0.703129,-0.260977,0.260977,0.703129,276.14199,364.353137)" fill="none" d="M 0 4 L 33.86 4" stroke="#E8B84B" strokeWidth="8"/>
                 <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,294.988903,409.97844)"    fill="none" d="M 0 4 L 68.87 4"  stroke="#E8B84B" strokeWidth="8"/>
@@ -65,12 +63,14 @@ export default function Navigation() {
                 <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,430.73403,409.978008)"    fill="none" d="M 0 4 L 77.54 4"  stroke="#E8B84B" strokeWidth="8"/>
                 <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,473.189692,409.978536)"   fill="none" d="M 0 4 L 67.05 4"  stroke="#E8B84B" strokeWidth="8"/>
               </svg>
-              <line x1="142" y1="10" x2="142" y2="86" stroke="#2a2a2e" strokeWidth="1"/>
-              <text y="57" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="42" fontWeight="800" letterSpacing="-0.5">
-                <tspan x="158" fill="#ffffff">Skyline</tspan><tspan fill="url(#navLogoGold)">Sites</tspan>
-              </text>
-              <text x="159" y="77" fontFamily="Inter, sans-serif" fontSize="8.5" fill="#4a4a52" letterSpacing="3.5">WEB DESIGN AGENTUR</text>
-            </svg>
+              <div className="w-px h-9 bg-zinc-800" style={{ pointerEvents: "none" }} />
+              <div className="flex flex-col justify-center" style={{ pointerEvents: "none" }}>
+                <span className="font-[var(--font-jakarta)] font-extrabold text-[17px] leading-[1.15] tracking-tight">
+                  <span className="text-white">Skyline</span><span className="bg-gradient-to-r from-[#C9963B] to-[#E8B84B] bg-clip-text text-transparent">Sites</span>
+                </span>
+                <span className="text-[6.5px] text-zinc-500 tracking-[0.3em] leading-none font-[var(--font-inter)] mt-[3px]">WEB DESIGN AGENTUR</span>
+              </div>
+            </motion.div>
           </Link>
           <div className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
