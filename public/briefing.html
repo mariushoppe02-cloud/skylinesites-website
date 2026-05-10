@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kunden-Briefing – SkylineSites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9963B;
+      --gold-light: #E8B84B;
+      --black: #09090b;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-400: #a1a1aa;
+      --gray-600: #52525b;
+      --gray-800: #27272a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      font-size: 10.5pt;
+      line-height: 1.6;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 48px 48px 64px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 32px;
+    }
+    .logo-block .logo-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22pt;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.5px;
+    }
+    .logo-block .logo-name span { color: var(--gold); }
+    .logo-block .logo-sub {
+      font-size: 8pt;
+      color: var(--gray-400);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .header-right {
+      text-align: right;
+    }
+    .header-right .doc-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .header-right .doc-sub {
+      font-size: 8.5pt;
+      color: var(--gray-400);
+      margin-top: 3px;
+    }
+
+    /* ── Intro box ── */
+    .intro {
+      background: var(--gray-100);
+      border-left: 3px solid var(--gold);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 36px;
+      font-size: 9.5pt;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+    .intro strong { color: var(--black); }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 32px;
+      page-break-inside: avoid;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11pt;
+      font-weight: 800;
+      color: var(--gold);
+      min-width: 28px;
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--black);
+      flex: 1;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gray-200);
+    }
+
+    /* ── Question ── */
+    .question {
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+    }
+    .question-label {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .question-label::before {
+      content: '→';
+      color: var(--gold);
+      font-size: 9pt;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    .answer-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding-left: 16px;
+    }
+    .answer-line {
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--gray-400) 0,
+        var(--gray-400) 4px,
+        transparent 4px,
+        transparent 8px
+      );
+      width: 100%;
+    }
+
+    /* Verschiedene Zeilenanzahl */
+    .lines-1 .answer-line:nth-child(n+2) { display: none; }
+
+    /* ── Mindestanforderungen Box ── */
+    .required-box {
+      border: 1.5px solid var(--gold);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 36px;
+      page-break-inside: avoid;
+    }
+    .required-box h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .required-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    .required-list li {
+      font-size: 9pt;
+      color: var(--gray-600);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .required-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-left {
+      font-size: 8pt;
+      color: var(--gray-400);
+    }
+    .footer-left strong { color: var(--gold); }
+    .footer-right {
+      font-size: 8pt;
+      color: var(--gray-400);
+      text-align: right;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { font-size: 10pt; }
+      .page { padding: 32px 40px 48px; }
+      .section { page-break-inside: avoid; }
+      .question { page-break-inside: avoid; }
+      .required-box { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-block">
+      <div class="logo-name">Skyline<span>Sites</span></div>
+      <div class="logo-sub">Web Design Agentur</div>
+    </div>
+    <div class="header-right">
+      <div class="doc-title">Kunden-Briefing</div>
+      <div class="doc-sub">Projektvorlage · Bitte vollständig ausfüllen</div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro">
+    <strong>Hinweis:</strong> Je vollständiger dieses Dokument ausgefüllt ist, desto schneller und gezielter können wir Ihre Website umsetzen. Bitte füllen Sie alle relevanten Felder aus und schicken Sie uns das ausgefüllte Dokument vor dem ersten Gespräch oder danach per E-Mail zu.
+  </div>
+
+  <!-- 1. Kunde & Branche -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Kunde &amp; Branche</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Unternehmensname + Rechtsform (z.B. GmbH, GbR, Einzelunternehmen, Freiberufler)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Branche</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Was macht das Unternehmen genau? (kurze Beschreibung, 2–3 Sätze)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Zielgruppe (Privatkunden / Geschäftskunden / Alter / Region)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 2. Ziel & Hauptaktion -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Ziel &amp; gewünschte Hauptaktion</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Hauptziel der Website (Anfragen generieren / Verkauf / Termine / Image / Info)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Was soll der Besucher tun? (Formular ausfüllen / Anrufen / Kaufen / Buchen)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Gibt es bereits eine Website? (Link / URL)</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 3. Design & Marke -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Design &amp; Marke</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Unternehmensfarben (Hex-Codes wenn vorhanden, z.B. #C9963B)</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Logo vorhanden? (Ja / Nein) — Falls ja: als PNG transparent mitschicken</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Gewünschter Stil (Mehrfachauswahl möglich)<br>
+        <span style="font-weight:400;color:#71717a;">□ Modern &nbsp; □ Klassisch &nbsp; □ Minimalistisch &nbsp; □ Luxuriös &nbsp; □ Verspielt &nbsp; □ Rustikal &nbsp; □ Tech</span>
+      </div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Animationen: &nbsp; □ Dezent &nbsp; □ Mittel &nbsp; □ Viel &nbsp; □ Keine</div>
+      <div class="answer-lines" style="display:none;"></div>
+    </div>
+    <div class="question">
+      <div class="question-label">2–3 Websites die dem Kunden GEFALLEN (Links + kurze Begründung)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">1–2 Websites die dem Kunden NICHT gefallen / was vermieden werden soll</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 4. Struktur & Inhalte -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Struktur &amp; Inhalte</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Paket: &nbsp; □ Onepager (ab 880 €) &nbsp; □ Business / Mehrseiter (ab 1.800 €) &nbsp; □ Enterprise (auf Anfrage)</div>
+    </div>
+    <div class="question">
+      <div class="question-label">Gewünschte Sektionen / Unterseiten (z.B. Hero, Leistungen, Über uns, Preise, FAQ, Kontakt, Blog…)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Texte: &nbsp; □ Vorhanden (Datei/Link mitschicken) &nbsp; □ Bitte erstellen &nbsp; □ Platzhalter reicht zunächst</div>
+    </div>
+    <div class="question">
+      <div class="question-label">Bilder / Fotos: &nbsp; □ Vorhanden (Dateien mitschicken) &nbsp; □ Stockfotos reichen &nbsp; □ Platzhalter reicht zunächst</div>
+    </div>
+    <div class="question">
+      <div class="question-label">Kundenbewertungen / Testimonials vorhanden? (Text + Name + Firma)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 5. Leistungen & Preise -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Leistungen, Preise &amp; USPs</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Liste aller angebotenen Leistungen / Produkte</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Sollen Preise öffentlich sichtbar sein? (Ja / Nein) — Falls ja: welche?</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Alleinstellungsmerkmale / USPs (Was macht den Kunden besonders?)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 6. Kontakt & Impressum -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">Kontakt &amp; Impressum-Daten</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Vollständige Adresse (Straße, PLZ, Ort)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Geschäftsführer / Inhaber (vollständiger Name)</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">E-Mail-Adresse (auch für Kontaktformular-Empfang)</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Telefonnummer &amp; WhatsApp-Nummer</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Umsatzsteuer: &nbsp; □ Kleinunternehmerregelung (§19 UStG) &nbsp; □ USt-ID: ____________________</div>
+    </div>
+    <div class="question">
+      <div class="question-label">Handelsregisternummer (falls vorhanden)</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 7. Technisches -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">Technisches &amp; Social Media</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Sprachen: &nbsp; □ Nur Deutsch &nbsp; □ Deutsch + Englisch &nbsp; □ Sonstige: _______________</div>
+    </div>
+    <div class="question">
+      <div class="question-label">Domain bereits vorhanden? (z.B. kundexy.de) — Falls ja: welche?</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Besondere Funktionen (Mehrfachauswahl)<br>
+        <span style="font-weight:400;color:#71717a;">□ Buchungssystem &nbsp; □ Online-Shop &nbsp; □ Mitgliederbereich &nbsp; □ Kalender &nbsp; □ Blog &nbsp; □ Mehrsprachigkeit &nbsp; □ Sonstiges</span>
+      </div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Social-Media-Profile zum Verlinken (Instagram, Facebook, LinkedIn, TikTok…)</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 8. Zeitplan -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <span class="section-title">Zeitplan &amp; Prioritäten</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">Gewünschtes Go-Live-Datum / Deadline</div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Was ist dem Kunden am wichtigsten?<br>
+        <span style="font-weight:400;color:#71717a;">□ Design / Optik &nbsp; □ Funktionen &nbsp; □ Ladegeschwindigkeit &nbsp; □ SEO / Sichtbarkeit &nbsp; □ Günstigster Preis</span>
+      </div>
+      <div class="answer-lines"><div class="answer-line"></div></div>
+    </div>
+    <div class="question">
+      <div class="question-label">Weitere Anmerkungen / besondere Wünsche</div>
+      <div class="answer-lines"><div class="answer-line"></div><div class="answer-line"></div><div class="answer-line"></div></div>
+    </div>
+  </div>
+
+  <!-- Mindestanforderungen -->
+  <div class="required-box">
+    <h3>✦ &nbsp; Mindestangaben für einen sofortigen Projektstart</h3>
+    <ul class="required-list">
+      <li>Unternehmensname + Branche</li>
+      <li>Logo (oder „kein Logo vorhanden")</li>
+      <li>Kurze Unternehmensbeschreibung</li>
+      <li>Vollständige Impressum-Daten</li>
+      <li>Ziel + gewünschte Hauptaktion</li>
+      <li>Gewünschtes Paket (Onepager / Business)</li>
+      <li>Farben + Stil-Wunsch oder Referenz-Links</li>
+      <li>E-Mail für Kontaktformular-Empfang</li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SkylineSites</strong> · HAM Handelsgesellschaft GbR · Offenbacherstraße 14, 63303 Dreieich
+    </div>
+    <div class="footer-right">
+      info@skylinesites.de · www.skylinesites.de
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
