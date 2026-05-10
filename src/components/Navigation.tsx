@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -38,13 +37,40 @@ export default function Navigation() {
     <header className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-500", scrolled ? "glass-nav shadow-lg" : "bg-transparent")}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href={`/${locale}`} className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8 transition-transform duration-300 group-hover:scale-110">
-              <Image src="/logo-transparent.png" alt="SkylineSites Logo" fill className="object-contain" priority />
-            </div>
-            <span className="font-[var(--font-jakarta)] font-bold text-lg text-white tracking-tight">
-              Skyline<span className="text-gradient-gold">Sites</span>
-            </span>
+          <Link href={`/${locale}`} className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 90" width="220" height="37" aria-label="SkylineSites Logo" style={{ transition: "opacity 0.2s", opacity: 1 }} onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")} onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
+              <defs>
+                <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#C9963B"/>
+                  <stop offset="100%" stopColor="#E8B84B"/>
+                </linearGradient>
+              </defs>
+              <svg x="0" y="4" width="128" height="82" viewBox="272 278 213 134" overflow="visible">
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)"   fill="none" d="M 0 4 L 60.76 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0.703129,-0.260977,0.260977,0.703129,276.14199,364.353137)" fill="none" d="M 0 4 L 33.86 4" stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,294.988903,409.97844)"    fill="none" d="M 0 4 L 68.87 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(-0.725773,-0.189086,0.189086,-0.725773,321.917125,367.313088)" fill="none" d="M 0 4 L 32.15 4" stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,318.030455,409.979736)"   fill="none" d="M 0 4 L 96.82 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0.702181,-0.263519,0.263519,0.702181,318.38237,337.31684)"   fill="none" d="M 0 4 L 67.95 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path fill="#E8B84B" transform="translate(358,318)" d="M 0.74 4.38 L 10.76 0.27 L 10.59 8.89 Z"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,362.499359,409.976424)"   fill="none" d="M 0 4 L 118.62 4" stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,384.250237,409.977312)"   fill="none" d="M 0 4 L 162.42 4" stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,384.986643,288.169254)"    fill="none" d="M 0 4 L 49 4"     stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,417.232422,336.021186)"   fill="none" d="M 0 4 L 63.81 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,408.982831,409.976808)"   fill="none" d="M 0 4 L 106.21 4" stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,411.986743,330.32063)"     fill="none" d="M 0 4.5 L 46.61 4.5" stroke="#E8B84B" strokeWidth="9"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,440.939981,356.680198)"   fill="none" d="M 0 4 L 33 4"     stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0.736191,0.143259,-0.143259,0.736191,432.447342,350.53225)" fill="none" d="M 0 4 L 63.28 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path fill="#E8B84B" transform="translate(430,350)" d="M 21.125 4.285 L 0.73 8.332 L 0.73 0.238 Z"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,430.73403,409.978008)"    fill="none" d="M 0 4 L 77.54 4"  stroke="#E8B84B" strokeWidth="8"/>
+                <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,473.189692,409.978536)"   fill="none" d="M 0 4 L 67.05 4"  stroke="#E8B84B" strokeWidth="8"/>
+              </svg>
+              <line x1="142" y1="10" x2="142" y2="86" stroke="#2a2a2e" strokeWidth="1"/>
+              <text y="57" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="42" fontWeight="800" letterSpacing="-0.5">
+                <tspan x="158" fill="#ffffff">Skyline</tspan><tspan fill="url(#navLogoGold)">Sites</tspan>
+              </text>
+              <text x="159" y="77" fontFamily="Inter, sans-serif" fontSize="8.5" fill="#4a4a52" letterSpacing="3.5">WEB DESIGN AGENTUR</text>
+            </svg>
           </Link>
           <div className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
