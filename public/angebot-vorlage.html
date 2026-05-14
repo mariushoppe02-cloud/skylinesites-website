@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkylineSites – Angebotsvorlage</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9963B;
+    --gold-l: #E8B84B;
+    --dark: #09090b;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg-soft: #f9fafb;
+    --bg-gold: #fffbf0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; font-size: 13px; line-height: 1.6; }
+
+  /* HEADER */
+  .header {
+    background: var(--dark);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1px; height: 36px; background: #2a2a32; }
+  .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.15; }
+  .logo-text .white { color: #fff; }
+  .logo-text .gold { color: var(--gold-l); }
+  .logo-sub { font-size: 7px; color: #3a3a42; letter-spacing: 0.32em; margin-top: 3px; }
+  .header-right { text-align: right; color: #6b6b6b; font-size: 11px; line-height: 1.8; }
+  .header-right strong { color: var(--gold); }
+
+  /* TITLE BAR */
+  .title-bar {
+    background: linear-gradient(90deg, var(--gold), var(--gold-l));
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title-bar h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 18px; color: #000; }
+  .title-bar .doc-info { font-size: 11px; color: rgba(0,0,0,0.6); text-align: right; line-height: 1.8; }
+
+  /* CUSTOMER BOX */
+  .customer-box {
+    margin: 24px 40px;
+    border: 1.5px solid var(--gold);
+    border-radius: 10px;
+    padding: 20px 24px;
+    background: var(--bg-gold);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .field-group label { display: block; font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .field-line { border-bottom: 1.5px solid var(--gold); min-height: 24px; padding-bottom: 2px; font-size: 13px; }
+
+  /* CONTENT */
+  .content { padding: 0 40px 40px; }
+
+  /* SECTION */
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--dark);
+    padding: 8px 14px;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .num {
+    background: var(--gold);
+    color: #000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .section-body { border: 1.5px solid var(--border); border-top: none; border-radius: 0 0 6px 6px; overflow: hidden; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; }
+  th { background: var(--bg-soft); font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th:last-child, td:last-child { text-align: right; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafafa; }
+
+  .cb { width: 14px; height: 14px; border: 1.5px solid #ccc; border-radius: 3px; display: inline-block; flex-shrink: 0; margin-right: 8px; vertical-align: middle; }
+  .item-name { font-weight: 600; font-size: 13px; }
+  .item-desc { color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  .badge { display: inline-block; background: var(--gold); color: #000; font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.05em; margin-left: 6px; vertical-align: middle; }
+  .badge-blue { background: #3b82f6; color: #fff; }
+  .price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .price-muted { color: var(--muted); font-size: 11px; font-weight: 400; }
+  .price-field { border-bottom: 1px solid #ccc; min-width: 80px; display: inline-block; text-align: right; }
+
+  /* PACKAGES */
+  .packages { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+  .pkg {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .pkg.featured { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,150,59,0.15); }
+  .pkg-header { background: var(--bg-soft); padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  .pkg.featured .pkg-header { background: var(--gold); }
+  .pkg-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 14px; }
+  .pkg.featured .pkg-name { color: #000; }
+  .pkg-tag { font-size: 9px; font-weight: 700; color: #000; background: rgba(0,0,0,0.15); padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.06em; display: inline-block; margin-top: 3px; }
+  .pkg-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px; color: var(--gold); padding: 12px 16px 6px; }
+  .pkg.featured .pkg-price { color: #000; }
+  .pkg-price small { font-size: 11px; font-weight: 400; color: var(--muted); }
+  .pkg-body { padding: 8px 16px 14px; }
+  .pkg-feat { display: flex; align-items: flex-start; gap: 6px; font-size: 11.5px; padding: 3px 0; }
+  .pkg-feat::before { content: "✓"; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pkg.featured .pkg-feat::before { color: var(--gold); }
+  .pkg-select { padding: 8px 16px 14px; border-top: 1px solid var(--border); }
+  .pkg-select label { display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; font-size: 12px; }
+
+  /* SUMMARY TABLE */
+  .summary-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .summary-table td { padding: 7px 12px; border-bottom: 1px dashed var(--border); font-size: 13px; }
+  .summary-table td:last-child { text-align: right; font-weight: 600; }
+  .summary-table .total-row td { border-bottom: none; border-top: 2px solid var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 15px; padding-top: 10px; }
+  .summary-table .total-row td:last-child { color: var(--gold); }
+  .summary-table .sub-row td { color: var(--muted); font-size: 11.5px; }
+
+  /* NOTES */
+  .notes-area {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    min-height: 60px;
+    background: var(--bg-soft);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--dark);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .doc-footer p { color: #4a4a52; font-size: 10px; }
+  .doc-footer strong { color: var(--gold); }
+
+  /* TERMS BOX */
+  .terms-box {
+    background: var(--bg-gold);
+    border: 1px solid rgba(201,150,59,0.3);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .term-item { }
+  .term-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 4px; }
+  .term-value { font-size: 12.5px; font-weight: 600; }
+  .term-sub { font-size: 11px; color: var(--muted); }
+
+  /* SIGNATURE */
+  .sig-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 24px; }
+  .sig-box { border-top: 1.5px solid var(--dark); padding-top: 6px; }
+  .sig-label { font-size: 10px; color: var(--muted); }
+
+  /* PAGE BREAKS */
+  .page-break-before { page-break-before: always; break-before: page; }
+  .page-break-avoid { page-break-inside: avoid; break-inside: avoid; }
+
+  /* PRINT */
+  @media print {
+    body { font-size: 12px; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .title-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-title { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pkg.featured .pkg-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print { display: none; }
+    @page { margin: 10mm 12mm; size: A4; }
+    .section { page-break-inside: avoid; }
+    .packages { page-break-inside: avoid; }
+    .pkg { page-break-inside: avoid; }
+    .terms-box { page-break-inside: avoid; }
+    .sig-row { page-break-inside: avoid; }
+    tr { page-break-inside: avoid; }
+  }
+
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .highlight-row td { background: var(--bg-gold) !important; font-weight: 600; }
+  .monthly-tag { font-size: 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="272 278 213 134" width="52" height="33" overflow="visible" aria-hidden="true">
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)"   fill="none" d="M 0 4 L 60.76 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0.703129,-0.260977,0.260977,0.703129,276.14199,364.353137)" fill="none" d="M 0 4 L 33.86 4" stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,294.988903,409.97844)"    fill="none" d="M 0 4 L 68.87 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(-0.725773,-0.189086,0.189086,-0.725773,321.917125,367.313088)" fill="none" d="M 0 4 L 32.15 4" stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,318.030455,409.979736)"   fill="none" d="M 0 4 L 96.82 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0.702181,-0.263519,0.263519,0.702181,318.38237,337.31684)"   fill="none" d="M 0 4 L 67.95 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path fill="#E8B84B" transform="translate(358,318)" d="M 0.74 4.38 L 10.76 0.27 L 10.59 8.89 Z"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,362.499359,409.976424)"   fill="none" d="M 0 4 L 118.62 4" stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,384.250237,409.977312)"   fill="none" d="M 0 4 L 162.42 4" stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,384.986643,288.169254)"    fill="none" d="M 0 4 L 49 4"     stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,417.232422,336.021186)"   fill="none" d="M 0 4 L 63.81 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,408.982831,409.976808)"   fill="none" d="M 0 4 L 106.21 4" stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,411.986743,330.32063)"     fill="none" d="M 0 4.5 L 46.61 4.5" stroke="#E8B84B" stroke-width="9"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,440.939981,356.680198)"   fill="none" d="M 0 4 L 33 4"     stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0.736191,0.143259,-0.143259,0.736191,432.447342,350.53225)" fill="none" d="M 0 4 L 63.28 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path fill="#E8B84B" transform="translate(430,350)" d="M 21.125 4.285 L 0.73 8.332 L 0.73 0.238 Z"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,430.73403,409.978008)"    fill="none" d="M 0 4 L 77.54 4"  stroke="#E8B84B" stroke-width="8"/>
+      <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,473.189692,409.978536)"   fill="none" d="M 0 4 L 67.05 4"  stroke="#E8B84B" stroke-width="8"/>
+    </svg>
+    <div class="logo-divider"></div>
+    <div>
+      <div class="logo-text"><span class="white">Skyline</span><span class="gold">Sites</span></div>
+      <div class="logo-sub">WEB DESIGN AGENTUR</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <strong>SkylineSites</strong><br>
+    Offenbacherstraße 14, 63303 Dreieich<br>
+    info@skylinesites.de · +49 172 8191583<br>
+    www.skylinesites.de
+  </div>
+</div>
+
+<!-- TITLE BAR -->
+<div class="title-bar">
+  <h1>Projektangebot & Leistungsübersicht</h1>
+  <div class="doc-info">
+    Angebot-Nr.: ___________<br>
+    Datum: ___________
+  </div>
+</div>
+
+<!-- CUSTOMER BOX -->
+<div class="customer-box">
+  <div class="field-group">
+    <label>Unternehmen / Kunde</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+  <div class="field-group">
+    <label>Ansprechpartner</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+  <div class="field-group">
+    <label>E-Mail</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+  <div class="field-group">
+    <label>Telefon</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+  <div class="field-group">
+    <label>Branche</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+  <div class="field-group">
+    <label>Gewünschter Launch</label>
+    <div class="field-line">&nbsp;</div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- SECTION 1: PAKETE -->
+<div class="section">
+  <div class="section-title"><span class="num">1</span> Hauptpaket – Bitte wählen</div>
+  <div style="border: 1.5px solid var(--border); border-top: none; border-radius: 0 0 6px 6px; padding: 16px;">
+    <div class="packages">
+
+      <div class="pkg">
+        <div class="pkg-header">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cb"></span>
+            <span class="pkg-name">Onepager</span>
+          </div>
+        </div>
+        <div class="pkg-price">ab 880 € <small>einmalig</small></div>
+        <div class="pkg-body">
+          <div class="pkg-feat">Einzelseite (1-Page Design)</div>
+          <div class="pkg-feat">Individuelles modernes Design</div>
+          <div class="pkg-feat">Mobile & Tablet optimiert</div>
+          <div class="pkg-feat">Kontaktformular</div>
+          <div class="pkg-feat">Grundlegende SEO-Optimierung</div>
+          <div class="pkg-feat">SSL-Zertifikat inklusive</div>
+          <div class="pkg-feat">Bis zu 6 Sektionen</div>
+          <div class="pkg-feat">Lieferzeit: 14 Werktage</div>
+        </div>
+        <div class="pkg-select">
+          <div style="font-size:11px;color:var(--muted)">Vereinbarter Preis:</div>
+          <div style="border-bottom:1.5px solid var(--gold);min-height:22px;margin-top:4px"></div>
+        </div>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-header">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cb" style="border-color:rgba(0,0,0,0.3)"></span>
+            <span class="pkg-name">Business Website</span>
+          </div>
+          <span class="pkg-tag">⭐ Empfohlene Wahl</span>
+        </div>
+        <div class="pkg-price">ab 1.800 € <small style="color:rgba(0,0,0,0.5)">einmalig</small></div>
+        <div class="pkg-body">
+          <div class="pkg-feat">Bis zu 8 Unterseiten</div>
+          <div class="pkg-feat">Premium Individuelles Design</div>
+          <div class="pkg-feat">Mobile & Tablet optimiert</div>
+          <div class="pkg-feat">Strukturierte Navigation</div>
+          <div class="pkg-feat">Erweiterte SEO-Optimierung</div>
+          <div class="pkg-feat">Blog / News-Bereich</div>
+          <div class="pkg-feat">Performance-Optimierung</div>
+          <div class="pkg-feat">SSL + Sicherheits-Setup</div>
+          <div class="pkg-feat">30 Tage Nachbetreuung</div>
+          <div class="pkg-feat">Lieferzeit: 21 Werktage</div>
+        </div>
+        <div class="pkg-select" style="border-color:rgba(201,150,59,0.3)">
+          <div style="font-size:11px;color:var(--muted)">Vereinbarter Preis:</div>
+          <div style="border-bottom:1.5px solid var(--gold);min-height:22px;margin-top:4px"></div>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-header">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="cb"></span>
+            <span class="pkg-name">Enterprise / Custom</span>
+          </div>
+        </div>
+        <div class="pkg-price" style="font-size:16px;padding-top:14px">Auf Anfrage</div>
+        <div class="pkg-body">
+          <div class="pkg-feat">Unbegrenzte Unterseiten</div>
+          <div class="pkg-feat">Custom Funktionen & Logik</div>
+          <div class="pkg-feat">E-Commerce / Online-Shop</div>
+          <div class="pkg-feat">Mitgliederbereich / Login</div>
+          <div class="pkg-feat">API-Anbindungen</div>
+          <div class="pkg-feat">Individuelles CMS</div>
+          <div class="pkg-feat">Prioritäts-Support</div>
+          <div class="pkg-feat">Persönliche Projektbegleitung</div>
+        </div>
+        <div class="pkg-select">
+          <div style="font-size:11px;color:var(--muted)">Vereinbarter Preis:</div>
+          <div style="border-bottom:1.5px solid var(--gold);min-height:22px;margin-top:4px"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: TECHNISCHE GRUNDLAGE -->
+<div class="section page-break-before">
+  <div class="section-title"><span class="num">2</span> Technische Grundlage & Bereitstellung</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Domain – Neuregistrierung</div></td>
+          <td><div class="item-desc">Neue Wunschdomain registrieren & einrichten (.de, .com etc.)</div></td>
+          <td><span class="price">ab 50 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Domain – Umzug / Transfer</div></td>
+          <td><div class="item-desc">Übertragung einer bestehenden Domain inkl. technischer Anpassung & DNS-Konfiguration</div></td>
+          <td><span class="price">ab 100 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Hosting-Einrichtung</div></td>
+          <td><div class="item-desc">Server-Setup, SSL-Zertifikat, Sicherheitskonfiguration & Veröffentlichung der Website</div></td>
+          <td><span class="price">ab 50 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td></td>
+          <td><div class="item-name">Laufende Kosten (Kunde trägt direkt)</div></td>
+          <td><div class="item-desc">Hosting ca. 10 €/Mt. · Domain ca. 10 €/Jahr · E-Mail je nach Bedarf</div></td>
+          <td><span class="price monthly-tag">ca. 10–20 €/Mt.</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">E-Mail Einrichtung Basic</div></td>
+          <td><div class="item-desc">Bis zu 2 E-Mail-Adressen (z. B. info@, kontakt@) inkl. Konfiguration</div></td>
+          <td><span class="price">ab 50 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">E-Mail Erweiterung</div></td>
+          <td><div class="item-desc">Jede weitere E-Mail-Adresse zusätzlich</div></td>
+          <td><span class="price">10 € / Adresse</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 3: DESIGN & INHALTE -->
+<div class="section">
+  <div class="section-title"><span class="num">3</span> Design & Inhalte</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Logo-Design Basic</div></td>
+          <td><div class="item-desc">Einfaches, modernes Logo für einen schnellen, professionellen Start</div></td>
+          <td><span class="price">ab 250 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Logo-Design Premium<span class="badge">Empfohlen</span></div></td>
+          <td><div class="item-desc">Individuelles Logo mit mehreren Entwürfen, Feedback-Runden & Quelldateien (SVG, PNG, transparent)</div></td>
+          <td><span class="price">ab 350 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Texterstellung Basic</div></td>
+          <td><div class="item-desc">Professionelle, SEO-optimierte Texte für bis zu 3 Seiten – klar strukturiert & zielgruppengerecht</div></td>
+          <td><span class="price">ab 150 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Texterstellung – Erweiterung</div></td>
+          <td><div class="item-desc">Jede weitere Seite individuell erstellt</div></td>
+          <td><span class="price">70 € / Seite</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Bildmaterial Basic</div></td>
+          <td><div class="item-desc">Auswahl & Integration hochwertiger lizenzfreier Stock-Fotos – bis zu 5 Bilder inklusive</div></td>
+          <td><span class="price">ab 80 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Bildmaterial – Erweiterung</div></td>
+          <td><div class="item-desc">Jedes weitere Bild zusätzlich</div></td>
+          <td><span class="price">20 € / Bild</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Video-Einbindung</div></td>
+          <td><div class="item-desc">Integration von bis zu 2 Videos (z. B. YouTube, Vimeo) für mehr Vertrauen & Aufmerksamkeit</div></td>
+          <td><span class="price">ab 50 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Video – weiteres</div></td>
+          <td><div class="item-desc">Jedes weitere Video zusätzlich</div></td>
+          <td><span class="price">25 € / Video</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 4: FUNKTIONEN & ERWEITERUNGEN -->
+<div class="section page-break-before">
+  <div class="section-title"><span class="num">4</span> Funktionen & Erweiterungen</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Zusätzliche Unterseite</div></td>
+          <td><div class="item-desc">Erweiterung um weitere Seiten (Leistungsseiten, Über-uns, Team, Blog-Artikel etc.)</div></td>
+          <td><span class="price">ab 100 € / Seite</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Mehrsprachigkeit</div></td>
+          <td><div class="item-desc">Übersetzung & technische Einrichtung einer zusätzlichen Sprache (z. B. DE + EN)</div></td>
+          <td><span class="price">ab 200 € / Sprache</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Terminbuchungssystem</div></td>
+          <td><div class="item-desc">Integration eines Online-Buchungssystems direkt auf der Website (z. B. Calendly, SimplyBook) <span class="monthly-tag">+ ca. 10–30 €/Mt. Anbieterkosten</span></div></td>
+          <td><span class="price">ab 150 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Erweitertes Kontaktformular Basic</div></td>
+          <td><div class="item-desc">Individuelle Formulare für Anfragen, Angebote oder Bewerbungen</div></td>
+          <td><span class="price">ab 100 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Erweitertes Kontaktformular Premium</div></td>
+          <td><div class="item-desc">Auswahlfelder, Datei-Uploads, Konditionallogik – für strukturierte & detaillierte Anfragen</div></td>
+          <td><span class="price">ab 200 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">WhatsApp-Button</div></td>
+          <td><div class="item-desc">Floating WhatsApp-Kontaktbutton für direkte Kundenkommunikation</div></td>
+          <td><span class="price">ab 30 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Cookie-Banner (DSGVO)</div></td>
+          <td><div class="item-desc">DSGVO-konformer Cookie-Hinweis mit Einwilligungsverwaltung</div></td>
+          <td><span class="price">ab 80 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Analytics-Einrichtung</div></td>
+          <td><div class="item-desc">Integration von Google Analytics oder Matomo (datenschutzkonform) zur Besucherauswertung</div></td>
+          <td><span class="price">ab 80 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Social Media Integration</div></td>
+          <td><div class="item-desc">Verlinkung & Einbindung von Social-Media-Profilen (Instagram, LinkedIn, Facebook, TikTok etc.)</div></td>
+          <td><span class="price">ab 30 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 5: MARKETING & SICHTBARKEIT -->
+<div class="section">
+  <div class="section-title"><span class="num">5</span> Marketing & lokale Sichtbarkeit</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">On-Page SEO-Optimierung</div></td>
+          <td><div class="item-desc">Technische SEO: Meta-Tags, strukturierte Daten, Sitemap, robots.txt, Ladezeit-Optimierung, Alt-Texte (einmalig)</div></td>
+          <td><span class="price">ab 350 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Google Unternehmensprofil – Einrichtung</div></td>
+          <td><div class="item-desc">Erstellung & vollständige Einrichtung Ihres Google Business-Profils für bessere lokale Sichtbarkeit</div></td>
+          <td><span class="price">ab 120 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Google Unternehmensprofil – Optimierung<span class="badge">Empfohlen</span></div></td>
+          <td><div class="item-desc">Inkl. Einrichtung + Beschreibungstexte, Kategorien, Bilder, Öffnungszeiten & Bewertungsstrategie</div></td>
+          <td><span class="price">ab 200 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 6: RECHTLICHES -->
+<div class="section">
+  <div class="section-title"><span class="num">6</span> Rechtliche Absicherung</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Impressum & Datenschutz</div></td>
+          <td><div class="item-desc">Technische Einbindung der vom Kunden bereitgestellten rechtlichen Texte in das Website-Design <span style="color:var(--gold);font-weight:600">*</span></div></td>
+          <td><span class="price">50 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">AGB-Seite</div></td>
+          <td><div class="item-desc">Einbindung der vom Kunden bereitgestellten AGB als eigene Unterseite</div></td>
+          <td><span class="price">30 €</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="padding:10px 12px;background:var(--bg-gold);font-size:11px;color:var(--muted);border-top:1px solid var(--border)">
+      <span style="color:var(--gold);font-weight:700">* Hinweis:</span> Rechtliche Inhalte (Impressum, Datenschutz, AGB) werden nicht von SkylineSites erstellt. Der Kunde stellt diese bereit (z. B. über eRecht24, Trusted Shops o. ä.). Wir übernehmen ausschließlich die technische Einbindung.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: LAUFENDE LEISTUNGEN -->
+<div class="section">
+  <div class="section-title"><span class="num">7</span> Laufende Leistungen (monatlich)</div>
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20px"></th>
+          <th>Leistung</th>
+          <th>Beschreibung</th>
+          <th style="width:110px">Preis</th>
+          <th style="width:90px">Vereinbart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Wartungsvertrag Basic<span class="badge">Empfohlen</span></div></td>
+          <td><div class="item-desc">Updates, Backups, Sicherheits-Checks & laufender technischer Support – monatlich kündbar</div></td>
+          <td><span class="price">ab 59 €/Mt.</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Wartungsvertrag Premium</div></td>
+          <td><div class="item-desc">Inkl. Basic + bis zu 1h Anpassungsleistungen pro Monat (Texte, Bilder, kleinere Änderungen)</div></td>
+          <td><span class="price">ab 99 €/Mt.</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
+          <td><div class="item-name">Einmalige Änderung / Pflege</div></td>
+          <td><div class="item-desc">Einzelne Anpassungen außerhalb des Wartungsvertrags (Texte, Bilder, neue Sektion etc.)</div></td>
+          <td><span class="price">ab 50 € / Auftrag</span></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 8: KALKULATION -->
+<div class="section page-break-before">
+  <div class="section-title"><span class="num">8</span> Angebotskalkulation</div>
+  <div style="border:1.5px solid var(--border);border-top:none;border-radius:0 0 6px 6px;padding:20px;">
+    <div class="two-col" style="gap:32px">
+      <div>
+        <table class="summary-table">
+          <tr><td style="color:var(--muted);font-size:11px;padding-bottom:2px" colspan="2">EINMALIGE KOSTEN</td></tr>
+          <tr><td>Hauptpaket</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Technische Grundlage</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Design & Inhalte</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Funktionen</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Marketing & SEO</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Rechtliches</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Sonstiges</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr class="total-row"><td>Gesamtbetrag (netto)</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr class="sub-row"><td colspan="2">Gemäß §19 UStG keine Umsatzsteuer (Kleinunternehmer)</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="summary-table">
+          <tr><td style="color:var(--muted);font-size:11px;padding-bottom:2px" colspan="2">LAUFENDE KOSTEN / MONAT</td></tr>
+          <tr><td>Wartungsvertrag</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr><td>Hosting (Kunde direkt)</td><td>ca. 10 €</td></tr>
+          <tr><td>Sonstiges</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+          <tr class="total-row"><td>Gesamt / Monat</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+        </table>
+
+        <div style="margin-top:20px">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px">Zahlungsplan</div>
+          <table class="summary-table">
+            <tr>
+              <td>50% Anzahlung bei Projektstart</td>
+              <td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            <tr>
+              <td>50% vor Veröffentlichung</td>
+              <td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px">Anmerkungen / Individueller Umfang</div>
+      <div class="notes-area">Hier können individuelle Absprachen, Besonderheiten oder abweichende Konditionen notiert werden.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS -->
+<div class="terms-box">
+  <div class="term-item">
+    <div class="term-label">Lieferzeit</div>
+    <div class="term-value">Onepager: 14 Werktage</div>
+    <div class="term-sub">Business Website: 21 Werktage<br>Enterprise: nach Absprache</div>
+  </div>
+  <div class="term-item">
+    <div class="term-label">Zahlung</div>
+    <div class="term-value">50% Anzahlung</div>
+    <div class="term-sub">50% bei Fertigstellung<br>Zahlung per Überweisung</div>
+  </div>
+  <div class="term-item">
+    <div class="term-label">Angebot gültig bis</div>
+    <div class="term-value" style="border-bottom:1.5px solid var(--gold);min-height:22px">&nbsp;</div>
+    <div class="term-sub" style="margin-top:8px">Alle Preise zzgl. etwaiger Drittanbieterkosten</div>
+  </div>
+</div>
+
+<!-- SIGNATURES -->
+<div class="sig-row">
+  <div class="sig-box">
+    <div style="font-size:12px;font-weight:600;margin-bottom:24px">Dreieich, _______________</div>
+    <div class="sig-label">SkylineSites – Marius Hoppe</div>
+  </div>
+  <div class="sig-box">
+    <div style="font-size:12px;font-weight:600;margin-bottom:24px">&nbsp;</div>
+    <div class="sig-label">Kunde / Auftraggeber, Ort & Datum</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <p><strong>SkylineSites</strong> · Offenbacherstraße 14, 63303 Dreieich · info@skylinesites.de · +49 172 8191583</p>
+  <p>www.skylinesites.de · Kleinunternehmer gemäß §19 UStG · Keine Umsatzsteuer</p>
+</div>
+
+<!-- PRINT BUTTON -->
+<div class="no-print" style="text-align:center;padding:24px;background:#f3f4f6;">
+  <button onclick="window.print()" style="background:linear-gradient(90deg,#C9963B,#E8B84B);color:#000;border:none;padding:12px 32px;border-radius:999px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer">
+    Als PDF drucken / speichern
+  </button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 82" width="390" height="82">
+  <defs>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9963B"/>
+      <stop offset="100%" stop-color="#E8B84B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Trennlinie -->
+  <line x1="0" y1="6" x2="0" y2="76" stroke="#626272" stroke-width="1"/>
+
+  <!-- Wordmark -->
+  <text y="53" font-family="Plus Jakarta Sans, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.5">
+    <tspan x="16" fill="#ffffff">Skyline</tspan><tspan fill="url(#goldText)">Sites</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="17" y="73" font-family="Inter, sans-serif" font-size="8.5" fill="#8A8A9A" letter-spacing="3.5">WEB DESIGN AGENTUR</text>
+</svg>

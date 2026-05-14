@@ -1,15 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Heart } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 import SectionLabel from "@/components/ui/SectionLabel";
+
 export default function About() {
   const t = useTranslations("about");
+  const tTeam = useTranslations("team");
+  const tRoot = useTranslations();
+  const locale = useLocale();
+
+  const members = tTeam.raw("members") as Array<{
+    name: string; role: string; focus: string; initials: string; quote: string;
+  }>;
+
   return (
     <section id="ueber-uns" className="section-padding bg-[#09090b] relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_30%_50%,rgba(201,150,59,0.06),transparent)]" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* LEFT – logo visual */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative">
             <div className="relative w-full aspect-square max-w-md mx-auto lg:mx-0">
               <div className="absolute inset-0 rounded-3xl border border-[#C9963B]/20 animate-pulse-glow" />
@@ -48,16 +59,43 @@ export default function About() {
               <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#C9963B] rounded-bl-3xl" />
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-6">
-            <SectionLabel>{t("label")}</SectionLabel>
-            <h2 className="text-4xl md:text-5xl font-extrabold font-[var(--font-jakarta)] text-white tracking-tight leading-tight">{t("headline")}</h2>
-            <p className="text-zinc-400 leading-relaxed text-lg">{t("text1")}</p>
-            <p className="text-zinc-400 leading-relaxed">{t("text2")}</p>
-            <div className="flex items-center gap-3 pt-4">
-              <Heart className="w-5 h-5 text-[#C9963B]" />
-              <p className="text-[#C9963B] font-semibold font-[var(--font-jakarta)] italic">{t("signature")}</p>
+
+          {/* RIGHT – teaser + team cards */}
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-8">
+            <div className="space-y-4">
+              <SectionLabel>{t("label")}</SectionLabel>
+              <h2 className="text-4xl md:text-5xl font-extrabold font-[var(--font-jakarta)] text-white tracking-tight leading-tight">{t("headline")}</h2>
+              <p className="text-zinc-400 leading-relaxed text-lg">{t("text1")}</p>
             </div>
+
+            {/* Mini team cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {members.map((m) => (
+                <div key={m.name} className="rounded-xl bg-[#18181b] border border-zinc-800 hover:border-[#C9963B]/40 transition-colors duration-300 p-5 space-y-3">
+                  <div className="flex items-center gap-3">
+                    {/* Photo placeholder */}
+                    <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 bg-[#C9963B]/5 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-bold text-[#C9963B] font-[var(--font-jakarta)]">{m.initials}</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-sm font-[var(--font-jakarta)]">{m.name}</p>
+                      <p className="text-[11px] text-[#C9963B]">{m.focus}</p>
+                    </div>
+                  </div>
+                  <p className="text-zinc-500 text-xs leading-relaxed italic">&ldquo;{m.quote}&rdquo;</p>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href={`/${locale}/ueber-uns`}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#C9963B] hover:text-[#E8B84B] transition-colors duration-200 group"
+            >
+              {tRoot("about_more")}
+              <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </Link>
           </motion.div>
+
         </div>
       </div>
     </section>
