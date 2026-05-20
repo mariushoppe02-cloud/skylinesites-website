@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkylineSites – Angebotsvorlage</title>
+<title> </title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -30,11 +30,11 @@
     print-color-adjust: exact;
   }
   .logo-wrap { display: flex; align-items: center; gap: 12px; }
-  .logo-divider { width: 1px; height: 36px; background: #2a2a32; }
+  .logo-divider { width: 1px; height: 36px; background: #6b6b6b; }
   .logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 20px; line-height: 1.15; }
   .logo-text .white { color: #fff; }
   .logo-text .gold { color: var(--gold-l); }
-  .logo-sub { font-size: 7px; color: #3a3a42; letter-spacing: 0.32em; margin-top: 3px; }
+  .logo-sub { font-size: 7px; color: #6b6b6b; letter-spacing: 0.32em; margin-top: 3px; }
   .header-right { text-align: right; color: #6b6b6b; font-size: 11px; line-height: 1.8; }
   .header-right strong { color: var(--gold); }
 
@@ -139,11 +139,12 @@
 
   /* SUMMARY TABLE */
   .summary-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-  .summary-table td { padding: 7px 12px; border-bottom: 1px dashed var(--border); font-size: 13px; }
-  .summary-table td:last-child { text-align: right; font-weight: 600; }
+  .summary-table td { padding: 7px 12px; border-bottom: 1px dashed var(--border); font-size: 13px; vertical-align: middle; }
+  .summary-table td:last-child { text-align: right; font-weight: 600; border-bottom: 1px dashed var(--border); }
+  .summary-table td.price-field { border-bottom: 1px dashed var(--border); display: table-cell; }
   .summary-table .total-row td { border-bottom: none; border-top: 2px solid var(--dark); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 15px; padding-top: 10px; }
-  .summary-table .total-row td:last-child { color: var(--gold); }
-  .summary-table .sub-row td { color: var(--muted); font-size: 11.5px; }
+  .summary-table .total-row td:last-child { color: var(--gold); border-bottom: none; }
+  .summary-table .sub-row td { color: var(--muted); font-size: 11.5px; border-bottom: none; }
 
   /* NOTES */
   .notes-area {
@@ -203,6 +204,7 @@
     .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .no-print { display: none; }
     @page { margin: 10mm 12mm; size: A4; }
+    @page { @bottom-right { content: counter(page) " / " counter(pages); font-size: 9px; color: #9ca3af; font-family: Inter, sans-serif; } }
     .section { page-break-inside: avoid; }
     .packages { page-break-inside: avoid; }
     .pkg { page-break-inside: avoid; }
@@ -549,10 +551,24 @@
         </tr>
         <tr>
           <td><span class="cb"></span></td>
+          <td><div class="item-name">Karten-Einbindung <span class="badge badge-blue">In Business inklusive</span></div></td>
+          <td><div class="item-desc">Google Maps Integration – zeigt Ihren Standort direkt auf der Website. Bei der Business Website standardmäßig enthalten.</div></td>
+          <td><span class="price">ab 20 €</span><div class="price-muted">bei Onepager</div></td>
+          <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr>
+          <td><span class="cb"></span></td>
           <td><div class="item-name">Terminbuchungssystem</div></td>
           <td><div class="item-desc">Integration eines Online-Buchungssystems direkt auf der Website (z. B. Calendly, SimplyBook) <span class="monthly-tag">+ ca. 10–30 €/Mt. Anbieterkosten</span></div></td>
           <td><span class="price">ab 150 €</span></td>
           <td><span class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td></td>
+          <td><div class="item-name">Kontaktformular Basic <span class="badge" style="background:#16a34a;color:#fff">Standard – inklusive</span></div></td>
+          <td><div class="item-desc">Einfaches Kontaktformular – standardmäßig in allen Paketen enthalten</div></td>
+          <td><span class="price" style="color:#16a34a">Inklusive</span></td>
+          <td></td>
         </tr>
         <tr>
           <td><span class="cb"></span></td>
@@ -743,7 +759,7 @@
         <table class="summary-table">
           <tr><td style="color:var(--muted);font-size:11px;padding-bottom:2px" colspan="2">LAUFENDE KOSTEN / MONAT</td></tr>
           <tr><td>Wartungsvertrag</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
-          <tr><td>Hosting (Kunde direkt)</td><td>ca. 10 €</td></tr>
+          <tr><td>Hosting <span style="font-size:11px;color:var(--muted)">(Domain, E-Mail)</span></td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
           <tr><td>Sonstiges</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
           <tr class="total-row"><td>Gesamt / Monat</td><td class="price-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
         </table>
@@ -793,11 +809,11 @@
 <!-- SIGNATURES -->
 <div class="sig-row">
   <div class="sig-box">
-    <div style="font-size:12px;font-weight:600;margin-bottom:24px">Dreieich, _______________</div>
-    <div class="sig-label">SkylineSites – Marius Hoppe</div>
+    <div style="margin-bottom:24px">&nbsp;</div>
+    <div class="sig-label">Geschäftsführer SkylineSites, Ort & Datum</div>
   </div>
   <div class="sig-box">
-    <div style="font-size:12px;font-weight:600;margin-bottom:24px">&nbsp;</div>
+    <div style="margin-bottom:24px">&nbsp;</div>
     <div class="sig-label">Kunde / Auftraggeber, Ort & Datum</div>
   </div>
 </div>
