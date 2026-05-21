@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function About() {
@@ -73,9 +74,15 @@ export default function About() {
               {members.map((m) => (
                 <div key={m.name} className="rounded-xl bg-[#18181b] border border-zinc-800 hover:border-[#C9963B]/40 transition-colors duration-300 p-5 space-y-3">
                   <div className="flex items-center gap-3">
-                    {/* Photo placeholder */}
-                    <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 bg-[#C9963B]/5 flex items-center justify-center flex-shrink-0">
-                      <span className="text-sm font-bold text-[#C9963B] font-[var(--font-jakarta)]">{m.initials}</span>
+                    <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 overflow-hidden relative flex-shrink-0">
+                      <Image
+                        src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
+                        alt={m.name}
+                        fill
+                        className="object-cover object-[center_20%]"
+                        style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}
+                        unoptimized
+                      />
                     </div>
                     <div>
                       <p className="font-bold text-white text-sm font-[var(--font-jakarta)]">{m.name}</p>

@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -39,15 +40,20 @@ export default async function UeberUnsPage({ params }: { params: Promise<{ local
         </div>
       </div>
 
-      {/* Group photo placeholder */}
+      {/* Group photo */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
-        <div className="w-full h-64 md:h-80 rounded-2xl border-2 border-dashed border-[#C9963B]/30 bg-[#C9963B]/3 flex flex-col items-center justify-center gap-3">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 text-[#C9963B]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 20H7a2 2 0 01-2-2v-1a5 5 0 015-5h4a5 5 0 015 5v1a2 2 0 01-2 2z" />
-            <circle cx="12" cy="7" r="3" strokeLinecap="round" strokeLinejoin="round" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M22 20h-1a2 2 0 01-2-2v-1a4 4 0 00-3-3.87M2 20h1a2 2 0 002-2v-1a4 4 0 013-3.87" />
-          </svg>
-          <p className="text-sm text-zinc-600 font-medium">{t("group_photo_label")}</p>
+        <div className="relative w-full rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/2]">
+          <Image
+            src="/team-foto.png"
+            alt="Marius Hoppe & Hamsa Sarwari – SkylineSites Gründer"
+            fill
+            className="object-cover object-center"
+            style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}
+            unoptimized
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#09090b]/55 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/25 via-transparent to-[#09090b]/25 pointer-events-none" />
         </div>
       </div>
 
@@ -67,13 +73,18 @@ export default async function UeberUnsPage({ params }: { params: Promise<{ local
         <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-10">{t("members_label")}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {members.map((m) => (
-            <div key={m.name} className="rounded-2xl bg-[#18181b] border border-zinc-800 overflow-hidden">
-              {/* Individual photo placeholder */}
-              <div className="h-56 border-b border-zinc-800 bg-[#C9963B]/3 flex flex-col items-center justify-center gap-3 relative">
-                <div className="w-20 h-20 rounded-full border-2 border-[#C9963B]/40 bg-[#09090b] flex items-center justify-center">
-                  <span className="text-2xl font-extrabold text-[#C9963B] font-[var(--font-jakarta)]">{m.initials}</span>
-                </div>
-                <p className="text-xs text-zinc-600">{t("photo_label")}</p>
+            <div key={m.name} className="group rounded-2xl bg-[#18181b] border border-zinc-800 overflow-hidden transition-all duration-300 hover:border-[#C9963B]/50 hover:shadow-[0_0_30px_rgba(201,150,59,0.15)]">
+              {/* Individual photo */}
+              <div className="h-64 sm:h-80 border-b border-zinc-800 relative overflow-hidden">
+                <Image
+                  src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
+                  alt={m.name}
+                  fill
+                  className="object-cover object-[center_30%] transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#18181b]/80 pointer-events-none" />
               </div>
               {/* Content */}
               <div className="p-7 space-y-4">
