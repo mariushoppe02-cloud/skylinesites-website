@@ -2,13 +2,12 @@
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
-const NAV_LINKS = [
-  { key:"benefits", href:"#vorteile" }, { key:"services", href:"#leistungen" }, { key:"pricing", href:"#pakete" },
-  { key:"process", href:"#ablauf" }, { key:"about", href:"#ueber-uns" }, { key:"faq", href:"#faq" }, { key:"contact", href:"#kontakt" },
-];
+const NAV_ANCHORS = ["vorteile","leistungen","pakete","ablauf","ueber-uns","faq","kontakt"];
+const NAV_KEYS =    ["benefits","services","pricing","process","about",    "faq","contact"];
 export default function Footer() {
   const t = useTranslations();
   const locale = useLocale();
+  const navLinks = NAV_KEYS.map((key, i) => ({ key, href: `/${locale}#${NAV_ANCHORS[i]}` }));
   return (
     <footer className="bg-[#09090b] border-t border-zinc-800/60">
       <div className="relative overflow-hidden">
@@ -16,7 +15,7 @@ export default function Footer() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h3 className="text-3xl md:text-4xl font-extrabold font-[var(--font-jakarta)] text-white mb-4">{t("footer.cta_headline")}</h3>
           <p className="text-zinc-400 mb-8 text-lg">{t("footer.cta_subline")}</p>
-          <a href="#kontakt" className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">{t("footer.cta_button")}</a>
+          <a href={`/${locale}#kontakt`} className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">{t("footer.cta_button")}</a>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -62,7 +61,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">{t("footer.nav_label")}</p>
-            <ul className="space-y-2">{NAV_LINKS.map((link) => <li key={link.key}><a href={link.href} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200">{t(`nav.${link.key}`)}</a></li>)}</ul>
+            <ul className="space-y-2">{navLinks.map((link) => <li key={link.key}><a href={link.href} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200">{t(`nav.${link.key}`)}</a></li>)}</ul>
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">{t("footer.legal_label")}</p>
