@@ -9,7 +9,6 @@ import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
 import Pricing from "@/components/sections/Pricing";
 import Addons from "@/components/sections/Addons";
-import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -32,7 +31,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <About />
       <Pricing />
       <Addons />
-      <Testimonials />
       <FAQ />
       <Contact />
       <Footer />
