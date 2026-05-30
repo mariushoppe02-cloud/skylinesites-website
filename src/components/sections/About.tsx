@@ -77,7 +77,7 @@ export default function About() {
                     <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 overflow-hidden relative flex-shrink-0">
                       <Image
                         src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
-                        alt={m.name}
+                        alt={`${m.name} – SkylineSites Webdesign Dreieich`}
                         fill
                         className="object-cover object-[center_20%]"
                         style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}

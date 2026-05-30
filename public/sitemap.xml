@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.skylinesites.de/de</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.skylinesites.de/de"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.skylinesites.de/en"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/en</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.skylinesites.de/de"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.skylinesites.de/en"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/de/ueber-uns</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.skylinesites.de/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.skylinesites.de/en/ueber-uns"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/en/ueber-uns</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.skylinesites.de/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.skylinesites.de/en/ueber-uns"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/de/impressum</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/de/datenschutz</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.skylinesites.de/de/agb</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
