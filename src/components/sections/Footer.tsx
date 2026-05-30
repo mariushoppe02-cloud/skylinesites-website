@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">© {new Date().getFullYear()} SkylineSites. Alle Rechte vorbehalten.</p>
-          <div className="flex items-center gap-2 text-xs text-zinc-600"><span>Made with</span><span className="text-[#C9963B]">♥</span><span>by SkylineSites</span></div>
+          <a href="https://www.skylinesites.de" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Designed by SkylineSites</a>
         </div>
       </div>
     </footer>
