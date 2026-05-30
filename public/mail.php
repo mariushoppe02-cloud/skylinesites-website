@@ -128,7 +128,7 @@ $confirm_body = '<!DOCTYPE html>
                 <a href="mailto:info@skylinesites.de" style="color:#C9963B;text-decoration:none;">info@skylinesites.de</a>
               </p>
               <p style="margin:0;font-size:11px;color:#3f3f46;">
-                © 2025 Skyline Sites · Diese E-Mail wurde automatisch generiert.
+                © <?php echo date("Y"); ?> Skyline Sites · Diese E-Mail wurde automatisch generiert.
               </p>
             </td>
           </tr>
