@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">© {new Date().getFullYear()} SkylineSites. Alle Rechte vorbehalten.</p>
-          <a href="https://www.skylinesites.de" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Designed by SkylineSites</a>
+          <a href="https://www.skylinesites.de" target="_blank" rel="noopener noreferrer" className="text-xs text-zinc-600 no-underline" style={{ background: "linear-gradient(90deg, #52525b 0%, #E8B84B 50%, #52525b 100%)", backgroundSize: "200% auto", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", transition: "background-position 0.6s ease" }} onMouseEnter={e => (e.currentTarget.style.backgroundPosition = "right center")} onMouseLeave={e => (e.currentTarget.style.backgroundPosition = "left center")}>Designed by SkylineSites</a>
         </div>
       </div>
     </footer>
