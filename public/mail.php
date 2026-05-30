@@ -52,11 +52,8 @@ $confirm_body = '<!DOCTYPE html>
 
           <!-- Header -->
           <tr>
-            <td style="background:linear-gradient(135deg,#1e1a10,#18181b);padding:40px 40px 32px;text-align:center;border-bottom:1px solid #27272a;">
-              <p style="margin:0 0 6px;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">
-                Skyline<span style="color:#C9963B;">Sites</span>
-              </p>
-              <p style="margin:0;font-size:11px;color:#71717a;letter-spacing:2px;text-transform:uppercase;">Web Design Agentur</p>
+            <td style="background:#18181b;padding:24px 40px;text-align:center;border-bottom:1px solid #27272a;">
+              <img src="https://www.skylinesites.de/logo-email.png" alt="SkylineSites – Web Design Agentur" width="280" height="70" style="display:block;margin:0 auto;max-width:100%;">
             </td>
           </tr>
 
@@ -74,7 +71,7 @@ $confirm_body = '<!DOCTYPE html>
               </p>
 
               <p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#a1a1aa;">
-                vielen Dank für Ihre Anfrage und Ihr Interesse an Skyline Sites.
+                vielen Dank für Ihre Anfrage und Ihr Interesse an SkylineSites.
               </p>
 
               <p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#a1a1aa;">
@@ -116,7 +113,7 @@ $confirm_body = '<!DOCTYPE html>
 
               <p style="margin:0;font-size:15px;color:#ffffff;line-height:1.8;">
                 Beste Grüße<br>
-                <strong style="color:#C9963B;">Skyline Sites</strong>
+                <strong style="color:#C9963B;">SkylineSites</strong>
               </p>
 
             </td>
