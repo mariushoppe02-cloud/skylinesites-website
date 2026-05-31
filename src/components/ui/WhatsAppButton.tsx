@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pointer-events-none">
       {/* Tooltip – außerhalb des Links, nicht klickbar */}
       <span
         className={`hidden sm:block whitespace-nowrap text-white text-xs font-semibold px-3 py-1.5 rounded-full bg-[#1a1a1a]/90 backdrop-blur-sm border border-white/10 shadow-lg transition-all duration-300 font-[var(--font-jakarta)] pointer-events-none ${
@@ -23,7 +23,7 @@ export default function WhatsAppButton() {
         aria-label="Jetzt auf WhatsApp schreiben"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex items-center justify-center group"
+        className="relative flex items-center justify-center group pointer-events-auto"
       >
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping" />
         <span className="absolute inset-[-4px] rounded-full bg-[#25D366] opacity-10 animate-pulse" />
