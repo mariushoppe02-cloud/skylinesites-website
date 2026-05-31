@@ -10,21 +10,22 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Jetzt auf WhatsApp schreiben"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-3"
     >
       {/* Tooltip */}
       <span
-        className={`hidden sm:block whitespace-nowrap text-white text-xs font-semibold px-3 py-1.5 rounded-full bg-[#1a1a1a]/90 backdrop-blur-sm border border-white/10 shadow-lg transition-all duration-300 font-[var(--font-jakarta)] ${
-          hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2 pointer-events-none"
+        className={`hidden sm:block whitespace-nowrap text-white text-xs font-semibold px-3 py-1.5 rounded-full bg-[#1a1a1a]/90 backdrop-blur-sm border border-white/10 shadow-lg transition-all duration-300 font-[var(--font-jakarta)] pointer-events-none ${
+          hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
         }`}
       >
         Jetzt auf WhatsApp schreiben
       </span>
 
-      {/* Button */}
-      <div className="relative flex items-center justify-center">
+      {/* Button – hover nur hier erkennen */}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="relative flex items-center justify-center group">
         {/* Pulse rings */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping" />
         <span className="absolute inset-[-4px] rounded-full bg-[#25D366] opacity-10 animate-pulse" />
