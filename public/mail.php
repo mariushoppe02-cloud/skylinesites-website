@@ -52,8 +52,8 @@ $confirm_body = '<!DOCTYPE html>
 
           <!-- Header -->
           <tr>
-            <td style="background:#18181b;padding:24px 40px;text-align:center;border-bottom:1px solid #27272a;">
-              <img src="https://www.skylinesites.de/logo-email.png" alt="SkylineSites – Web Design Agentur" width="280" height="70" style="display:block;margin:0 auto;max-width:100%;">
+            <td style="background:#18181b;padding:32px 40px;text-align:center;border-bottom:1px solid #27272a;">
+              <img src="https://www.skylinesites.de/logo-email.png" alt="SkylineSites – Web Design Agentur" width="360" height="90" style="display:block;margin:0 auto;max-width:100%;">
             </td>
           </tr>
 
@@ -128,7 +128,7 @@ $confirm_body = '<!DOCTYPE html>
                 <a href="mailto:info@skylinesites.de" style="color:#C9963B;text-decoration:none;">info@skylinesites.de</a>
               </p>
               <p style="margin:0;font-size:11px;color:#3f3f46;">
-                © <?php echo date("Y"); ?> Skyline Sites · Diese E-Mail wurde automatisch generiert.
+                © <?php echo date("Y"); ?> SkylineSites · Diese E-Mail wurde automatisch generiert.
               </p>
             </td>
           </tr>
