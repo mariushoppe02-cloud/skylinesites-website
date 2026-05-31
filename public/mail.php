@@ -52,8 +52,8 @@ $confirm_body = '<!DOCTYPE html>
 
           <!-- Header -->
           <tr>
-            <td style="background:#18181b;padding:0;text-align:center;border-bottom:1px solid #27272a;">
-              <img src="https://www.skylinesites.de/logo-email.png" alt="SkylineSites – Web Design Agentur" width="600" style="display:block;width:100%;height:auto;">
+            <td style="background:#18181b;padding:28px 40px;text-align:center;border-bottom:1px solid #27272a;">
+              <img src="https://www.skylinesites.de/logo-email.png" alt="SkylineSites – Web Design Agentur" width="520" style="display:block;margin:0 auto;max-width:100%;height:auto;">
             </td>
           </tr>
 
