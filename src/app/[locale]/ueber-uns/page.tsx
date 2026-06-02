@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -5,6 +6,19 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import Image from "next/image";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isDE = locale === "de";
+  return {
+    title: isDE
+      ? "Über uns – SkylineSites | Webdesign Agentur Frankfurt & Rhein-Main"
+      : "About Us – SkylineSites | Web Design Agency Frankfurt & Rhine-Main",
+    description: isDE
+      ? "Lerne das Team hinter SkylineSites kennen – deine persönliche Webdesign Agentur aus Dreieich für Frankfurt, Rhein-Main und ganz Deutschland. Festpreise ab 880 €."
+      : "Meet the team behind SkylineSites – your personal web design agency from Dreieich for Frankfurt, Rhine-Main and all of Germany. Fixed prices from €880.",
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,7 +59,7 @@ export default async function UeberUnsPage({ params }: { params: Promise<{ local
         <div className="relative w-full rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/2]">
           <Image
             src="/team-foto.png"
-            alt="Marius Hoppe & Hamsa Sarwari – Gründer der Webdesign Agentur SkylineSites aus Dreieich Frankfurt"
+            alt="Marius Hoppe & Hamsa Sarwari – Gründer der Webdesign Agentur SkylineSites Frankfurt & Rhein-Main"
             fill
             className="object-cover object-center"
             style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}
@@ -78,7 +92,7 @@ export default async function UeberUnsPage({ params }: { params: Promise<{ local
               <div className="h-64 sm:h-80 border-b border-zinc-800 relative overflow-hidden">
                 <Image
                   src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
-                  alt={`${m.name} – ${m.role} bei SkylineSites Webdesign Agentur Dreieich`}
+                  alt={`${m.name} – ${m.role} bei SkylineSites Webdesign Agentur Frankfurt & Rhein-Main`}
                   fill
                   className="object-cover object-[center_30%] transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}

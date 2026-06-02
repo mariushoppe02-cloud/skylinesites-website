@@ -9,8 +9,8 @@ export default function JsonLd({ locale }: { locale: string }) {
         "@id": "https://www.skylinesites.de/#business",
         name: "SkylineSites",
         description: isDE
-          ? "Professionelle Webdesign Agentur aus Dreieich – Websites ab 880 € für Unternehmen in Frankfurt & Rhein-Main."
-          : "Professional web design agency from Dreieich – websites from €880 for businesses in Frankfurt & Rhine-Main.",
+          ? "SkylineSites – Webdesign Agentur für Frankfurt & Rhein-Main. Professionelle Websites ab 880 €, persönlich betreut, festpreisgarantiert. Unser Büro sitzt in Dreieich, unsere Kunden sind in Frankfurt, Offenbach, Wiesbaden, Darmstadt und ganz Deutschland."
+          : "SkylineSites – Web design agency for Frankfurt & Rhine-Main. Professional websites from €880, personally managed, fixed price guaranteed. Based in Dreieich, serving clients in Frankfurt and across Germany.",
         url: "https://www.skylinesites.de",
         logo: "https://www.skylinesites.de/og-image.jpg",
         image: "https://www.skylinesites.de/og-image.jpg",
@@ -29,10 +29,13 @@ export default function JsonLd({ locale }: { locale: string }) {
           longitude: 8.6976,
         },
         areaServed: [
-          { "@type": "City", name: "Dreieich" },
           { "@type": "City", name: "Frankfurt am Main" },
-          { "@type": "City", name: "Offenbach" },
+          { "@type": "City", name: "Dreieich" },
+          { "@type": "City", name: "Offenbach am Main" },
+          { "@type": "City", name: "Wiesbaden" },
           { "@type": "City", name: "Darmstadt" },
+          { "@type": "City", name: "Eschborn" },
+          { "@type": "City", name: "Neu-Isenburg" },
           { "@type": "State", name: "Hessen" },
         ],
         priceRange: "€€",
@@ -76,8 +79,8 @@ export default function JsonLd({ locale }: { locale: string }) {
         "@id": "https://www.skylinesites.de/#service",
         name: isDE ? "Webdesign & Webentwicklung" : "Web Design & Development",
         provider: { "@id": "https://www.skylinesites.de/#business" },
-        areaServed: "Frankfurt Rhein-Main",
-        serviceType: isDE ? "Webdesign" : "Web Design",
+        areaServed: "Frankfurt am Main, Rhein-Main, Dreieich, Hessen, Deutschland",
+        serviceType: isDE ? "Webdesign Frankfurt" : "Web Design Frankfurt",
       },
     ],
   };
