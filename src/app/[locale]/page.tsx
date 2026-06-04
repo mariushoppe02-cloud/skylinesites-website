@@ -12,6 +12,7 @@ import Addons from "@/components/sections/Addons";
 import FAQ from "@/components/sections/FAQ";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
+import MarqueeBrands from "@/components/ui/MarqueeBrands";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -24,6 +25,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <main>
       <Navigation />
       <Hero />
+      <MarqueeBrands />
       <Benefits />
       <Services />
       <WhyUs />

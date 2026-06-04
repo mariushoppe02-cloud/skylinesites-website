@@ -7,6 +7,8 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import CookieBanner from "@/components/ui/CookieBanner";
 import JsonLd from "@/components/ui/JsonLd";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import IntroAnimation from "@/components/ui/IntroAnimation";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
@@ -87,6 +89,8 @@ export default async function LocaleLayout({
       </head>
       <body className="bg-[#09090b] text-white antialiased">
         <NextIntlClientProvider messages={messages}>
+          <IntroAnimation />
+          <ScrollProgress />
           {children}
           <WhatsAppButton />
           <CookieBanner />
