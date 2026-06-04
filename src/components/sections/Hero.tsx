@@ -1,31 +1,8 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowDown, Sparkles } from "lucide-react";
-
-function TypewriterText({ text, delay = 800 }: { text: string; delay?: number }) {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-  useEffect(() => {
-    let i = 0;
-    const timer = setTimeout(() => {
-      const interval = setInterval(() => {
-        i++;
-        setDisplayed(text.slice(0, i));
-        if (i >= text.length) { clearInterval(interval); setDone(true); }
-      }, 90);
-      return () => clearInterval(interval);
-    }, delay);
-    return () => clearTimeout(timer);
-  }, [text, delay]);
-  return (
-    <>
-      {displayed}
-      {!done && <span className="animate-pulse text-[#E8B84B]">|</span>}
-    </>
-  );
-}
 
 // ── GLSL ──────────────────────────────────────────────────────────────────
 const VERT = `#version 300 es
@@ -180,7 +157,7 @@ export default function Hero() {
               {t("headline1")}
             </span>
             <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-gradient-gold mt-1 drop-shadow-[0_2px_32px_rgba(201,150,59,0.3)]">
-              <TypewriterText text={t("headline2")} delay={900} />
+              {t("headline2")}
             </span>
           </h1>
         </motion.div>
