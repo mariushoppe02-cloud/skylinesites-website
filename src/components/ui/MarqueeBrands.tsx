@@ -1,8 +1,10 @@
 "use client";
-const BRANDS = ["Handwerker", "Dienstleister", "Coaches", "Restaurants", "Ärzte & Therapeuten", "Startups", "Einzelunternehmer", "Agenturen", "Freiberufler", "Berater", "Fotografen", "Fitnessstudios"];
+import { useTranslations } from "next-intl";
 
 export default function MarqueeBrands() {
-  const items = [...BRANDS, ...BRANDS];
+  const t = useTranslations("marquee");
+  const brands = t.raw("brands") as string[];
+  const items = [...brands, ...brands];
   return (
     <div className="relative w-full overflow-hidden border-y border-zinc-800/60 bg-[#0d0d10] py-3.5">
       <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-[#0d0d10] to-transparent" />

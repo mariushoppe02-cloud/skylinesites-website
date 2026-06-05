@@ -14,7 +14,7 @@ export default function JsonLd({ locale }: { locale: string }) {
         url: "https://www.skylinesites.de",
         logo: "https://www.skylinesites.de/og-image.jpg",
         image: "https://www.skylinesites.de/og-image.jpg",
-        telephone: "+4917281915 83",
+        telephone: "+491728191583",
         email: "info@skylinesites.de",
         address: {
           "@type": "PostalAddress",

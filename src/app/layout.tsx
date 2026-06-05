@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.skylinesites.de"),
   verification: {
     google: "Ni8d-jvz1-qbgQ0s8k9yxXWOiTmiTZrCffOttQM6r8s",
   },

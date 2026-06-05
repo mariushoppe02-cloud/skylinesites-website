@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isDE = locale === "de";
+  return {
+    title: isDE ? "AGB – SkylineSites" : "Terms & Conditions – SkylineSites",
+    description: isDE
+      ? "Allgemeine Geschäftsbedingungen der SkylineSites Webdesign Agentur aus Dreieich."
+      : "General terms and conditions of the SkylineSites web design agency from Dreieich.",
+    alternates: { canonical: `https://www.skylinesites.de/${locale}/agb` },
+    robots: { index: false, follow: true },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

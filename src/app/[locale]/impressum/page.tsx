@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isDE = locale === "de";
+  return {
+    title: isDE ? "Impressum – SkylineSites" : "Imprint – SkylineSites",
+    description: isDE
+      ? "Impressum und Anbieterkennzeichnung der SkylineSites Webdesign Agentur aus Dreieich."
+      : "Imprint and provider identification of the SkylineSites web design agency from Dreieich.",
+    alternates: { canonical: `https://www.skylinesites.de/${locale}/impressum` },
+    robots: { index: false, follow: true },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

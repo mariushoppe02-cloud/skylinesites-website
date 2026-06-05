@@ -1,13 +1,69 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const Logo = ({ width = 72, height = 45 }: { width?: number; height?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="272 278 213 134" width={width} height={height} overflow="visible">
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)"   fill="none" d="M 0 4 L 60.76 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0.703129,-0.260977,0.260977,0.703129,276.14199,364.353137)" fill="none" d="M 0 4 L 33.86 4" stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,294.988903,409.97844)"    fill="none" d="M 0 4 L 68.87 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(-0.725773,-0.189086,0.189086,-0.725773,321.917125,367.313088)" fill="none" d="M 0 4 L 32.15 4" stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,318.030455,409.979736)"   fill="none" d="M 0 4 L 96.82 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0.702181,-0.263519,0.263519,0.702181,318.38237,337.31684)"   fill="none" d="M 0 4 L 67.95 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path fill="#E8B84B" transform="translate(358,318)" d="M 0.74 4.38 L 10.76 0.27 L 10.59 8.89 Z"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,362.499359,409.976424)"   fill="none" d="M 0 4 L 118.62 4" stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,384.250237,409.977312)"   fill="none" d="M 0 4 L 162.42 4" stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,384.986643,288.169254)"    fill="none" d="M 0 4 L 49 4"     stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,417.232422,336.021186)"   fill="none" d="M 0 4 L 63.81 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,408.982831,409.976808)"   fill="none" d="M 0 4 L 106.21 4" stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,411.986743,330.32063)"     fill="none" d="M 0 4.5 L 46.61 4.5" stroke="#E8B84B" strokeWidth="9"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,440.939981,356.680198)"   fill="none" d="M 0 4 L 33 4"     stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0.736191,0.143259,-0.143259,0.736191,432.447342,350.53225)" fill="none" d="M 0 4 L 63.28 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path fill="#E8B84B" transform="translate(430,350)" d="M 21.125 4.285 L 0.73 8.332 L 0.73 0.238 Z"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,430.73403,409.978008)"    fill="none" d="M 0 4 L 77.54 4"  stroke="#E8B84B" strokeWidth="8"/>
+    <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,473.189692,409.978536)"   fill="none" d="M 0 4 L 67.05 4"  stroke="#E8B84B" strokeWidth="8"/>
+  </svg>
+);
+
+// Bleibt für die gesamte Lebensdauer eines echten Seiten-Loads bestehen.
+// Bei SPA-Navigation (Next <Link>) bleibt das Modul geladen -> Flag bleibt
+// true -> die Intro-Animation wird nicht erneut abgespielt.
+let introHasRun = false;
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function IntroAnimation() {
   const [visible, setVisible] = useState(true);
+  const exitInstant = useRef(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 2200);
-    return () => clearTimeout(timer);
+  useIsomorphicLayoutEffect(() => {
+    // Intro nur beim ersten Öffnen / echten Neuladen zeigen – niemals bei
+    // interner Navigation (Menüpunkte, Kontakt-Button, Sprachwechsel ...).
+    const skip = () => { exitInstant.current = true; setVisible(false); };
+
+    if (introHasRun) { skip(); return; }
+    introHasRun = true;
+
+    const navEntry = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    const isReload = navEntry?.type === "reload";
+
+    let fromSameSite = false;
+    try {
+      fromSameSite =
+        !!document.referrer &&
+        new URL(document.referrer).origin === window.location.origin;
+    } catch {}
+
+    // Kein echtes Reload, aber von der eigenen Seite gekommen (interner Link
+    // mit Full-Reload) -> Animation überspringen.
+    if (!isReload && fromSameSite) { skip(); return; }
+
+    // Logo zoomt dem Betrachter entgegen und blendet aus.
+    const t = setTimeout(() => setVisible(false), 2200);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -16,7 +72,7 @@ export default function IntroAnimation() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: exitInstant.current ? 0 : 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[999] flex items-center justify-center bg-[#09090b]"
         >
           <motion.div
@@ -25,26 +81,7 @@ export default function IntroAnimation() {
             transition={{ duration: 2, times: [0, 0.45, 1], ease: ["easeOut", "easeIn"] }}
             className="flex items-center gap-4"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="272 278 213 134" width="72" height="45" overflow="visible">
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,276.10874,409.977072)"   fill="none" d="M 0 4 L 60.76 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0.703129,-0.260977,0.260977,0.703129,276.14199,364.353137)" fill="none" d="M 0 4 L 33.86 4" stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,294.988903,409.97844)"    fill="none" d="M 0 4 L 68.87 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(-0.725773,-0.189086,0.189086,-0.725773,321.917125,367.313088)" fill="none" d="M 0 4 L 32.15 4" stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,318.030455,409.979736)"   fill="none" d="M 0 4 L 96.82 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0.702181,-0.263519,0.263519,0.702181,318.38237,337.31684)"   fill="none" d="M 0 4 L 67.95 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path fill="#E8B84B" transform="translate(358,318)" d="M 0.74 4.38 L 10.76 0.27 L 10.59 8.89 Z"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,362.499359,409.976424)"   fill="none" d="M 0 4 L 118.62 4" stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,384.250237,409.977312)"   fill="none" d="M 0 4 L 162.42 4" stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,384.986643,288.169254)"    fill="none" d="M 0 4 L 49 4"     stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,417.232422,336.021186)"   fill="none" d="M 0 4 L 63.81 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,408.982831,409.976808)"   fill="none" d="M 0 4 L 106.21 4" stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0.75,0,0,0.75,411.986743,330.32063)"     fill="none" d="M 0 4.5 L 46.61 4.5" stroke="#E8B84B" strokeWidth="9"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,440.939981,356.680198)"   fill="none" d="M 0 4 L 33 4"     stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0.736191,0.143259,-0.143259,0.736191,432.447342,350.53225)" fill="none" d="M 0 4 L 63.28 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path fill="#E8B84B" transform="translate(430,350)" d="M 21.125 4.285 L 0.73 8.332 L 0.73 0.238 Z"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,430.73403,409.978008)"    fill="none" d="M 0 4 L 77.54 4"  stroke="#E8B84B" strokeWidth="8"/>
-              <path strokeLinecap="butt" transform="matrix(0,-0.75,0.75,0,473.189692,409.978536)"   fill="none" d="M 0 4 L 67.05 4"  stroke="#E8B84B" strokeWidth="8"/>
-            </svg>
+            <Logo width={72} height={45} />
             <div className="w-px h-12 bg-zinc-700" />
             <div className="flex flex-col">
               <span className="font-[var(--font-jakarta)] font-extrabold text-[28px] leading-tight tracking-tight">

@@ -28,8 +28,18 @@ function FaqEntry({ item, index }: { item: FaqItem; index: number }) {
 export default function FAQ() {
   const t = useTranslations("faq");
   const items = t.raw("items") as FaqItem[];
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
   return (
     <section id="faq" className="section-padding bg-[#09090b] relative overflow-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <SectionLabel>{t("label")}</SectionLabel>

@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isDE = locale === "de";
+  return {
+    title: isDE ? "Datenschutzerklärung – SkylineSites" : "Privacy Policy – SkylineSites",
+    description: isDE
+      ? "Datenschutzerklärung der SkylineSites Webdesign Agentur – Informationen zur Verarbeitung personenbezogener Daten."
+      : "Privacy policy of the SkylineSites web design agency – information on the processing of personal data.",
+    alternates: { canonical: `https://www.skylinesites.de/${locale}/datenschutz` },
+    robots: { index: false, follow: true },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

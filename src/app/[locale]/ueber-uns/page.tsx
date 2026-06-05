@@ -17,6 +17,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: isDE
       ? "Lerne das Team hinter SkylineSites kennen – deine persönliche Webdesign Agentur aus Dreieich für Frankfurt, Rhein-Main und ganz Deutschland. Festpreise ab 880 €."
       : "Meet the team behind SkylineSites – your personal web design agency from Dreieich for Frankfurt, Rhine-Main and all of Germany. Fixed prices from €880.",
+    alternates: {
+      canonical: `https://www.skylinesites.de/${locale}/ueber-uns`,
+      languages: {
+        de: "https://www.skylinesites.de/de/ueber-uns",
+        en: "https://www.skylinesites.de/en/ueber-uns",
+      },
+    },
   };
 }
 
