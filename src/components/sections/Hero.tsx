@@ -167,7 +167,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed"
         >
           {t("subline")}
         </motion.p>
@@ -199,7 +199,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-8 text-zinc-400 text-sm"
+          className="mt-10 sm:mt-16 mb-12 sm:mb-0 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 sm:gap-8 text-zinc-400 text-sm"
         >
           {(t.raw("trust") as string[]).map((item) => (
             <span key={item} className="font-medium">{item}</span>

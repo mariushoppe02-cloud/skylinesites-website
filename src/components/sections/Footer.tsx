@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h3 className="text-3xl md:text-4xl font-extrabold font-[var(--font-jakarta)] text-white mb-4">{t("footer.cta_headline")}</h3>
           <p className="text-zinc-400 mb-8 text-lg">{t("footer.cta_subline")}</p>
-          <a href={`/${locale}#kontakt`} className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">{t("footer.cta_button")}</a>
+          <Link href={`/${locale}#kontakt`} className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm bg-gradient-to-r from-[#C9963B] to-[#E8B84B] text-black hover:opacity-90 hover:shadow-[0_0_40px_rgba(201,150,59,0.4)] transition-all duration-300 font-[var(--font-jakarta)]">{t("footer.cta_button")}</Link>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">{t("footer.nav_label")}</p>
-            <ul className="space-y-2">{navLinks.map((link) => <li key={link.key}><a href={link.href} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200">{t(`nav.${link.key}`)}</a></li>)}</ul>
+            <ul className="space-y-2">{navLinks.map((link) => <li key={link.key}><Link href={link.href} className="text-sm text-zinc-400 hover:text-white transition-colors duration-200">{t(`nav.${link.key}`)}</Link></li>)}</ul>
           </div>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4">{t("footer.legal_label")}</p>
