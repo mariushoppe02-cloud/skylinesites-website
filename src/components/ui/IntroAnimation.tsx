@@ -34,7 +34,9 @@ const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function IntroAnimation() {
-  const [visible, setVisible] = useState(true);
+  // Lief die Intro in dieser Session schon (z.B. Sprachwechsel -> Remount),
+  // wird das Overlay gar nicht erst gerendert -> kein kurzes Aufblitzen.
+  const [visible, setVisible] = useState(() => !introHasRun);
   const exitInstant = useRef(false);
 
   useIsomorphicLayoutEffect(() => {
