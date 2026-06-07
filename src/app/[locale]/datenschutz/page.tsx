@@ -8,10 +8,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isDE = locale === "de";
   return {
-    title: isDE ? "Datenschutzerklärung – SkylineSites" : "Privacy Policy – SkylineSites",
+    title: isDE ? "Datenschutzerklärung - SkylineSites" : "Privacy Policy - SkylineSites",
     description: isDE
-      ? "Datenschutzerklärung der SkylineSites Webdesign Agentur – Informationen zur Verarbeitung personenbezogener Daten."
-      : "Privacy policy of the SkylineSites web design agency – information on the processing of personal data.",
+      ? "Datenschutzerklärung der SkylineSites Webdesign Agentur - Informationen zur Verarbeitung personenbezogener Daten."
+      : "Privacy policy of the SkylineSites web design agency - information on the processing of personal data.",
     alternates: { canonical: `https://www.skylinesites.de/${locale}/datenschutz` },
     robots: { index: false, follow: true },
   };
@@ -175,10 +175,10 @@ export default async function DatenschutzPage({ params }: { params: Promise<{ lo
           <Card>
             <p className="font-semibold text-white mb-3">Gesetzliche Aufbewahrungsfristen (deutsches Recht)</p>
             <ul className="space-y-2">
-              <li><span className="text-[#C9963B] font-semibold">10 Jahre</span> — Bücher, Aufzeichnungen, Jahresabschlüsse (§ 147 AO, § 257 HGB)</li>
-              <li><span className="text-[#C9963B] font-semibold">8 Jahre</span> — Buchungsbelege, Rechnungen, Kostenbelege (§ 147 AO, § 257 HGB)</li>
-              <li><span className="text-[#C9963B] font-semibold">6 Jahre</span> — Übrige Geschäftsunterlagen, Handels- und Geschäftsbriefe (§ 147 AO, § 257 HGB)</li>
-              <li><span className="text-[#C9963B] font-semibold">3 Jahre</span> — Daten zur Geltendmachung von Ansprüchen (§§ 195, 199 BGB – reguläre Verjährungsfrist)</li>
+              <li><span className="text-[#C9963B] font-semibold">10 Jahre</span> - Bücher, Aufzeichnungen, Jahresabschlüsse (§ 147 AO, § 257 HGB)</li>
+              <li><span className="text-[#C9963B] font-semibold">8 Jahre</span> - Buchungsbelege, Rechnungen, Kostenbelege (§ 147 AO, § 257 HGB)</li>
+              <li><span className="text-[#C9963B] font-semibold">6 Jahre</span> - Übrige Geschäftsunterlagen, Handels- und Geschäftsbriefe (§ 147 AO, § 257 HGB)</li>
+              <li><span className="text-[#C9963B] font-semibold">3 Jahre</span> - Daten zur Geltendmachung von Ansprüchen (§§ 195, 199 BGB - reguläre Verjährungsfrist)</li>
             </ul>
           </Card>
         </Section>

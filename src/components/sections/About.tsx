@@ -21,7 +21,7 @@ export default function About() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* LEFT – logo visual */}
+          {/* LEFT - logo visual */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative">
             <div className="relative w-full aspect-square max-w-md mx-auto lg:mx-0">
               <div className="absolute inset-0 rounded-3xl border border-[#C9963B]/20 animate-pulse-glow" />
@@ -61,7 +61,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* RIGHT – teaser + team cards */}
+          {/* RIGHT - teaser + team cards */}
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-8">
             <div className="space-y-4">
               <SectionLabel>{t("label")}</SectionLabel>
@@ -77,7 +77,7 @@ export default function About() {
                     <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 overflow-hidden relative flex-shrink-0">
                       <Image
                         src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
-                        alt={`${m.name} – SkylineSites Webdesign Dreieich`}
+                        alt={`${m.name} - SkylineSites Webdesign Dreieich`}
                         fill
                         className="object-cover object-[center_20%]"
                         style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}

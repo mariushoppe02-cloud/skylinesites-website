@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isDE = locale === "de";
   return {
-    title: isDE ? "AGB – SkylineSites" : "Terms & Conditions – SkylineSites",
+    title: isDE ? "AGB - SkylineSites" : "Terms & Conditions - SkylineSites",
     description: isDE
       ? "Allgemeine Geschäftsbedingungen der SkylineSites Webdesign Agentur aus Dreieich."
       : "General terms and conditions of the SkylineSites web design agency from Dreieich.",
@@ -74,7 +74,7 @@ export default async function AgbPage({ params }: { params: Promise<{ locale: st
           </h1>
           <div className="h-1 w-16 bg-gradient-to-r from-[#C9963B] to-[#E8B84B] rounded" />
           <p className="text-zinc-500 text-sm mt-4">
-            Skyline Sites — HAM Handelsgesellschaft GbR
+            Skyline Sites - HAM Handelsgesellschaft GbR
           </p>
         </div>
       </div>
@@ -89,8 +89,8 @@ export default async function AgbPage({ params }: { params: Promise<{ locale: st
               Skyline Sites (HAM Handelsgesellschaft GbR, vertreten durch Marius Hoppe, Hamsa Sarwari
               und Ayan Mubarak, Offenbacherstraße 14, 63303 Dreieich)
             </span>{" "}
-            — nachfolgend <span className="text-white font-semibold">Anbieter</span> — und dem
-            jeweiligen Kunden — nachfolgend <span className="text-white font-semibold">Kunde</span> —
+            - nachfolgend <span className="text-white font-semibold">Anbieter</span> - und dem
+            jeweiligen Kunden - nachfolgend <span className="text-white font-semibold">Kunde</span> -
             über die Erstellung und Betreuung von Websites sowie damit verbundene Dienstleistungen.
           </p>
           <p>
@@ -344,7 +344,7 @@ export default async function AgbPage({ params }: { params: Promise<{ locale: st
           <Card>
             <List items={[
               "Es gilt ausschließlich deutsches Recht.",
-              "Gerichtsstand ist — soweit gesetzlich zulässig — der Sitz des Anbieters (Dreieich). Bei Streitigkeiten wird das nächstgelegene zuständige Amtsgericht herangezogen; dies ist das Amtsgericht Langen.",
+              "Gerichtsstand ist - soweit gesetzlich zulässig - der Sitz des Anbieters (Dreieich). Bei Streitigkeiten wird das nächstgelegene zuständige Amtsgericht herangezogen; dies ist das Amtsgericht Langen.",
               "Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt der Vertrag im Übrigen wirksam. Die unwirksame Bestimmung wird durch eine wirksame ersetzt, die dem wirtschaftlichen Zweck am nächsten kommt.",
             ]} />
           </Card>

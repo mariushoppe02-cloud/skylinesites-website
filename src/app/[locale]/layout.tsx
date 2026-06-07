@@ -22,12 +22,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const isDE = locale === "de";
 
   const title = isDE
-    ? "SkylineSites – Webdesign Agentur aus Dreieich | Frankfurt & Umgebung"
-    : "SkylineSites – Web Design Agency from Dreieich | Frankfurt & Region";
+    ? "SkylineSites - Webdesign Agentur aus Dreieich | Frankfurt & Umgebung"
+    : "SkylineSites - Web Design Agency from Dreieich | Frankfurt & Region";
 
   const description = isDE
-    ? "Professionelle Websites ab 880 € – persönlich betreut, schnell geliefert, festpreisgarantiert. Webdesign aus Dreieich für Unternehmen in Frankfurt & Rhein-Main."
-    : "Professional websites from €880 – personally managed, fast delivery, fixed price guaranteed. Web design from Dreieich for businesses in Frankfurt & Rhine-Main.";
+    ? "Professionelle Websites ab 880 € - persönlich betreut, schnell geliefert, festpreisgarantiert. Webdesign aus Dreieich für Unternehmen in Frankfurt & Rhein-Main."
+    : "Professional websites from €880 - personally managed, fast delivery, fixed price guaranteed. Web design from Dreieich for businesses in Frankfurt & Rhine-Main.";
 
   const url = isDE ? "https://www.skylinesites.de/de" : "https://www.skylinesites.de/en";
 
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           url: "https://www.skylinesites.de/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: isDE ? "SkylineSites – Webdesign Agentur Dreieich Frankfurt" : "SkylineSites – Web Design Agency Frankfurt Germany",
+          alt: isDE ? "SkylineSites - Webdesign Agentur Dreieich Frankfurt" : "SkylineSites - Web Design Agency Frankfurt Germany",
         },
       ],
     },

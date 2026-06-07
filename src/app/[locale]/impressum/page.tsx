@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const isDE = locale === "de";
   return {
-    title: isDE ? "Impressum – SkylineSites" : "Imprint – SkylineSites",
+    title: isDE ? "Impressum - SkylineSites" : "Imprint - SkylineSites",
     description: isDE
       ? "Impressum und Anbieterkennzeichnung der SkylineSites Webdesign Agentur aus Dreieich."
       : "Imprint and provider identification of the SkylineSites web design agency from Dreieich.",

@@ -40,7 +40,7 @@ export default function IntroAnimation() {
   const exitInstant = useRef(false);
 
   useIsomorphicLayoutEffect(() => {
-    // Intro nur beim ersten Öffnen / echten Neuladen zeigen – niemals bei
+    // Intro nur beim ersten Öffnen / echten Neuladen zeigen - niemals bei
     // interner Navigation (Menüpunkte, Kontakt-Button, Sprachwechsel ...).
     const skip = () => { exitInstant.current = true; setVisible(false); };
 

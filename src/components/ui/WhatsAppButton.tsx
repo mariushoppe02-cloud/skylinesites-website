@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pointer-events-none">
-      {/* Tooltip – außerhalb des Links, nicht klickbar */}
+      {/* Tooltip - außerhalb des Links, nicht klickbar */}
       <span
         className={`hidden sm:block whitespace-nowrap text-white text-xs font-semibold px-3 py-1.5 rounded-full bg-[#1a1a1a]/90 backdrop-blur-sm border border-white/10 shadow-lg transition-all duration-300 font-[var(--font-jakarta)] pointer-events-none ${
           hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
