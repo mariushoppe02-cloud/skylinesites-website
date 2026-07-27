@@ -66,7 +66,7 @@ export default async function UeberUnsPage({ params }: { params: Promise<{ local
         <div className="relative w-full rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/2]">
           <Image
             src="/team-foto.png"
-            alt="Marius Hoppe & Hamsa Sarwari - Gründer der Webdesign Agentur SkylineSites Frankfurt & Rhein-Main"
+            alt="Hamsa Sarwari & Marius Hoppe - Gründer der Webdesign Agentur SkylineSites Frankfurt & Rhein-Main"
             fill
             className="object-cover object-center"
             style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}

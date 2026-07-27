@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
-import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 export default function About() {
@@ -75,14 +74,20 @@ export default function About() {
                 <div key={m.name} className="rounded-xl bg-[#18181b] border border-zinc-800 hover:border-[#C9963B]/40 transition-colors duration-300 p-5 space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full border-2 border-[#C9963B]/40 overflow-hidden relative flex-shrink-0">
-                      <Image
-                        src={`/team-${m.name.split(" ")[0].toLowerCase()}.png`}
-                        alt={`${m.name} - SkylineSites Webdesign Dreieich`}
-                        fill
-                        className="object-cover object-[center_20%]"
-                        style={{ filter: "brightness(0.88) contrast(1.05) saturate(0.80)" }}
-                        unoptimized
-                      />
+                      {/* Tonwerte sind ins Bild gebacken — kein CSS-filter zur Laufzeit */}
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcSet={`/team/${m.name.split(" ")[0].toLowerCase()}-400.webp`}
+                        />
+                        <img
+                          src={`/team/${m.name.split(" ")[0].toLowerCase()}-400.jpg`}
+                          alt={`${m.name} - SkylineSites Webdesign Dreieich`}
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 w-full h-full object-cover object-[center_20%]"
+                        />
+                      </picture>
                     </div>
                     <div>
                       <p className="font-bold text-white text-sm font-[var(--font-jakarta)]">{m.name}</p>
