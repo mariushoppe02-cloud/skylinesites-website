@@ -74,7 +74,7 @@ export default async function DatenschutzPage({ params }: { params: Promise<{ lo
           <Card>
             <p className="font-semibold text-white">HAM Handelsgesellschaft GbR</p>
             <p>Gesellschafter: Marius Hoppe, Hamsa Sarwari, Ayan Mubarak</p>
-            <p>Offenbacherstraße 14, 63303 Dreieich, Deutschland</p>
+            <p>Offenbacherstraße 34, 63303 Dreieich, Deutschland</p>
             <p>
               E-Mail:{" "}
               <a href="mailto:info@skylinesites.de" className="text-[#C9963B] hover:underline">

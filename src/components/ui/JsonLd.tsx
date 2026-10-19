@@ -18,7 +18,7 @@ export default function JsonLd({ locale }: { locale: string }) {
         email: "info@skylinesites.de",
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Offenbacherstraße 14",
+          streetAddress: "Offenbacherstraße 34",
           addressLocality: "Dreieich",
           postalCode: "63303",
           addressCountry: "DE",

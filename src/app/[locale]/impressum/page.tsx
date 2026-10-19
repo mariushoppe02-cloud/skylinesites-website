@@ -56,7 +56,7 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
         <Section title="Angaben gemäß § 5 TMG">
           <p className="font-semibold text-white">HAM Handelsgesellschaft GbR</p>
           <p>Gesellschafter: Marius Hoppe, Hamsa Sarwari, Ayan Mubarak</p>
-          <p>Offenbacherstraße 14<br />63303 Dreieich<br />Deutschland</p>
+          <p>Offenbacherstraße 34<br />63303 Dreieich<br />Deutschland</p>
         </Section>
 
         <Section title="Kontakt">
@@ -75,7 +75,7 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
 
         <Section title="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV">
           <p className="font-semibold text-white">Marius Hoppe</p>
-          <p>Offenbacherstraße 14<br />63303 Dreieich</p>
+          <p>Offenbacherstraße 34<br />63303 Dreieich</p>
         </Section>
 
         <Section title="EU-Streitschlichtung">

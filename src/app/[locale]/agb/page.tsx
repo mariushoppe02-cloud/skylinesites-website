@@ -87,7 +87,7 @@ export default async function AgbPage({ params }: { params: Promise<{ locale: st
             Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen{" "}
             <span className="text-white font-medium">
               Skyline Sites (HAM Handelsgesellschaft GbR, vertreten durch Marius Hoppe, Hamsa Sarwari
-              und Ayan Mubarak, Offenbacherstraße 14, 63303 Dreieich)
+              und Ayan Mubarak, Offenbacherstraße 34, 63303 Dreieich)
             </span>{" "}
             - nachfolgend <span className="text-white font-semibold">Anbieter</span> - und dem
             jeweiligen Kunden - nachfolgend <span className="text-white font-semibold">Kunde</span> -
